@@ -1,1 +1,400 @@
 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>توجيهي بلس - غزة</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="manifest" href="manifest.json">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --accent: #0d9488;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --success: #10b981;
+      --error: #ef4444;
+      --radius: 16px;
+    }
+
+    .dark-mode {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #334155;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; transition: background 0.3s, color 0.3s; }
+    body { background-color: var(--bg); color: var(--text); padding-bottom: 90px; min-height: 100vh; }
+
+    header {
+      background: var(--card-bg);
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo { font-size: 20px; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 8px; }
+    .header-actions { display: flex; gap: 10px; align-items: center; }
+    .icon-btn { background: var(--bg); border: 1px solid var(--border); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justifyContent: center; cursor: pointer; color: var(--text); font-size: 16px; }
+
+    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+
+    /* البطاقات الترحيبية واشتراك 10 شيكل */
+    .banner {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: white;
+      padding: 20px;
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.2);
+    }
+    .banner h2 { font-size: 18px; margin-bottom: 8px; font-weight: 700; }
+    .banner p { font-size: 13px; opacity: 0.9; margin-bottom: 12px; }
+    .banner-btn { background: white; color: var(--primary); border: none; padding: 8px 16px; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 13px; }
+
+    /* التبويبات */
+    .tabs { display: flex; gap: 8px; margin-bottom: 20px; background: var(--card-bg); padding: 6px; border: 1px solid var(--border); border-radius: 12px; }
+    .tab { flex: 1; padding: 10px; text-align: center; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 14px; color: var(--text-muted); border: none; background: transparent; }
+    .tab.active { background: var(--primary); color: white; }
+
+    /* أقسام المواد */
+    .section-title { font-size: 16px; font-weight: 700; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 24px; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover { border-color: var(--primary); transform: translateY(-2px); }
+    .card i { font-size: 24px; color: var(--primary); margin-bottom: 10px; }
+    .card h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .card p { font-size: 12px; color: var(--text-muted); }
+    .locked-badge { position: absolute; top: 12px; left: 12px; background: #fee2e2; color: #ef4444; font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 700; }
+    .unlocked-badge { position: absolute; top: 12px; left: 12px; background: #d1fae5; color: #059669; font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 700; }
+
+    /* نافذة الأسئلة / الفلاش كاردز */
+    .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1000; align-items: center; justifyContent: center; padding: 16px; }
+    .modal-content { background: var(--card-bg); width: 100%; max-width: 500px; border-radius: var(--radius); padding: 24px; max-height: 90vh; overflow-y: auto; position: relative; }
+    .close-modal { position: absolute; top: 16px; left: 16px; font-size: 20px; cursor: pointer; color: var(--text-muted); }
+
+    /* أسئلة بنك الاختبارات */
+    .question-box { margin-bottom: 16px; }
+    .question-title { font-size: 15px; font-weight: 700; margin-bottom: 12px; line-height: 1.5; }
+    .options { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+    .option { background: var(--bg); border: 1px solid var(--border); padding: 12px 16px; border-radius: 10px; cursor: pointer; font-size: 14px; }
+    .option:hover { border-color: var(--primary); }
+    .option.correct { background: #d1fae5; border-color: #059669; color: #065f46; font-weight: 700; }
+    .option.wrong { background: #fee2e2; border-color: #ef4444; color: #991b1b; }
+    .explanation { background: var(--bg); border-right: 4px solid var(--primary); padding: 12px; border-radius: 8px; font-size: 13px; margin-bottom: 16px; display: none; }
+
+    /* البطاقات البصرية (Flashcards) */
+    .flashcard { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 24px; text-align: center; min-height: 180px; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; margin-bottom: 16px; }
+    .flashcard h4 { font-size: 17px; color: var(--primary); margin-bottom: 8px; }
+    .flashcard p { font-size: 14px; color: var(--text-muted); }
+
+    /* نافذة إدخال الكود (10 شيكل) */
+    .sub-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 2000; align-items: center; justifyContent: center; padding: 20px; }
+    .sub-card { background: var(--card-bg); width: 100%; max-width: 400px; padding: 24px; border-radius: var(--radius); text-align: center; }
+    .sub-card h3 { margin-bottom: 12px; font-size: 18px; color: var(--primary); }
+    .sub-card p { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; line-height: 1.6; }
+    .sub-card input { width: 100%; padding: 12px; border: 1px solid var(--border); background: var(--bg); color: var(--text); border-radius: 8px; font-size: 16px; text-align: center; margin-bottom: 12px; text-transform: uppercase; }
+    .sub-card button { width: 100%; background: var(--primary); color: white; border: none; padding: 12px; border-radius: 8px; font-weight: 700; cursor: pointer; margin-bottom: 8px; }
+
+    /* شريط التنقل السفلي */
+    .nav-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--card-bg); border-top: 1px solid var(--border); display: flex; justify-content: space-around; padding: 10px; z-index: 99; }
+    .nav-item { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 11px; color: var(--text-muted); cursor: pointer; background: none; border: none; }
+    .nav-item.active { color: var(--primary); font-weight: 700; }
+    .nav-item i { font-size: 18px; }
+
+    .btn-primary { background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 700; cursor: pointer; width: 100%; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo"><i class="fa-solid fa-graduation-cap"></i> توجيهي بلس غزة</div>
+    <div class="header-actions">
+      <button class="icon-btn" onclick="toggleDarkMode()"><i class="fa-solid fa-moon" id="dark-icon"></i></button>
+      <button class="icon-btn" onclick="openSubModal()"><i class="fa-solid fa-key" style="color: #f59e0b;"></i></button>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="banner">
+      <h2>دراستك خفيفة ومتاحة بدون إنترنت! 📱</h2>
+      <p>اشترك بـ 10 شيكل فقط شهرياً عبر (محفظتي أو Jawwal Pay) وافتح كافة الأسئلة والملخصات الوزارية.</p>
+      <button class="banner-btn" onclick="openSubModal()">فعّل حسابك الآن (كود 30 يوم)</button>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab('exams')">بنك الاختبارات</button>
+      <button class="tab" onclick="switchTab('flashcards')">كبسولات التلخيص</button>
+    </div>
+
+    <!-- قسم بنك الاختبارات -->
+    <div id="exams-section">
+      <div class="section-title">اختر المادة الدراسية</div>
+      <div class="grid">
+        <div class="card" onclick="openExam('الفيزياء', true)">
+          <span class="unlocked-badge">مفتوح مجاناً</span>
+          <i class="fa-solid fa-atom"></i>
+          <h3>الفيزياء</h3>
+          <p>الوحدة الأولى: الميكانيكا</p>
+        </div>
+        <div class="card" onclick="openExam('الرياضيات', true)">
+          <span class="unlocked-badge">مفتوح مجاناً</span>
+          <i class="fa-solid fa-square-root-variable"></i>
+          <h3>الرياضيات</h3>
+          <p>التفاضل والتكامل</p>
+        </div>
+        <div class="card" onclick="openExam('اللغة الإنجليزية', false)" id="card-eng">
+          <span class="locked-badge" id="badge-eng">مقفل (10 شيكل)</span>
+          <i class="fa-solid fa-book-open"></i>
+          <h3>اللغة الإنجليزية</h3>
+          <p>الوحدة الثانية والوزاريات</p>
+        </div>
+        <div class="card" onclick="openExam('الكيمياء', false)" id="card-chem">
+          <span class="locked-badge" id="badge-chem">مقفل (10 شيكل)</span>
+          <i class="fa-solid fa-flask"></i>
+          <h3>الكيمياء</h3>
+          <p>الكيمياء العضوية</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- قسم الكبسولات البصرية -->
+    <div id="flashcards-section" style="display: none;">
+      <div class="section-title">بطاقات المراجعة السريعة (تصفح Offline)</div>
+      <div class="grid">
+        <div class="card" onclick="openFlashcards('قوانين الفيزياء')">
+          <i class="fa-solid fa-bolt"></i>
+          <h3>قوانين الفيزياء</h3>
+          <p>15 بطاقة مركزة</p>
+        </div>
+        <div class="card" onclick="openFlashcards('قواعد الإنجليزي')">
+          <i class="fa-solid fa-language"></i>
+          <h3>قواعد الإنجليزي</h3>
+          <p>20 قاعدة رئيسية</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- نافذة الاختبار التفاعلي -->
+  <div class="modal" id="examModal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('examModal')">&times;</span>
+      <h3 id="examModalTitle" style="margin-bottom: 16px; color: var(--primary);">عنوان الاختبار</h3>
+      <div class="question-box">
+        <div class="question-title" id="qText">السؤال سيظهر هنا...</div>
+        <div class="options" id="qOptions"></div>
+        <div class="explanation" id="qExp"><strong>التوضيح:</strong> <span id="qExpText"></span></div>
+      </div>
+      <button class="btn-primary" id="nextBtn" onclick="nextQuestion()" style="display:none;">السؤال التالي</button>
+    </div>
+  </div>
+
+  <!-- نافذة الكبسولات التلخيصية -->
+  <div class="modal" id="flashModal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('flashModal')">&times;</span>
+      <h3 id="flashTitle" style="margin-bottom: 16px; color: var(--primary);">كبسولة المراجعة</h3>
+      <div class="flashcard" onclick="flipCard()">
+        <h4 id="flashFront">العنوان أو القانون</h4>
+        <p id="flashBack" style="margin-top: 10px;">اضغط لقراءة التفاصيل والشرح المختصر</p>
+      </div>
+      <button class="btn-primary" onclick="nextCard()">الكبسولة التالية</button>
+    </div>
+  </div>
+
+  <!-- نافذة الاشتراك وتفعيل الكود -->
+  <div class="sub-modal" id="subModal">
+    <div class="sub-card">
+      <span class="close-modal" style="position:static; float:left;" onclick="closeSubModal()">&times;</span>
+      <h3>اشتراك توجيهي بلس (10 شيكل)</h3>
+      <p>حّول 10 شيكل عبر محفظتي أو Jawwal Pay على الرقم: <br><strong style="color:var(--primary);">0590000000</strong><br>ثم راسل واتساب لإرسال الإيصال واستلام الكود.</p>
+      <input type="text" id="voucherInput" placeholder="أدخل كود التفعيل (مثل: GAZA10)">
+      <button onclick="activateVoucher()">تفعيل الاشتـراك فوراً</button>
+      <button style="background:transparent; color:var(--text-muted); border:1px solid var(--border);" onclick="window.open('https://wa.me/970590000000', '_blank')"><i class="fa-brands fa-whatsapp"></i> اطلب الكود عبر واتساب</button>
+    </div>
+  </div>
+
+  <!-- شريط التنقل السفلي -->
+  <nav class="nav-bar">
+    <button class="nav-item active" onclick="switchTab('exams')"><i class="fa-solid fa-pen-to-square"></i> الاختبارات</button>
+    <button class="nav-item" onclick="switchTab('flashcards')"><i class="fa-solid fa-bolt"></i> الكبسولات</button>
+    <button class="nav-item" onclick="openSubModal()"><i class="fa-solid fa-crown" style="color:#f59e0b;"></i> الاشتراكات</button>
+  </nav>
+
+  <script>
+    let isSubscribed = localStorage.getItem('tawjihi_sub') === 'true';
+
+    function checkSubscriptionStatus() {
+      if (isSubscribed) {
+        document.getElementById('badge-eng').innerText = 'مفتوح (اشتراك فعال)';
+        document.getElementById('badge-eng').className = 'unlocked-badge';
+        document.getElementById('badge-chem').innerText = 'مفتوح (اشتراك فعال)';
+        document.getElementById('badge-chem').className = 'unlocked-badge';
+      }
+    }
+    checkSubscriptionStatus();
+
+    function switchTab(tab) {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+      if(tab === 'exams') {
+        document.getElementById('exams-section').style.display = 'block';
+        document.getElementById('flashcards-section').style.display = 'none';
+      } else {
+        document.getElementById('exams-section').style.display = 'none';
+        document.getElementById('flashcards-section').style.display = 'block';
+      }
+    }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      const icon = document.getElementById('dark-icon');
+      icon.className = document.body.classList.contains('dark-mode') ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+    }
+
+    function openSubModal() { document.getElementById('subModal').style.display = 'flex'; }
+    function closeSubModal() { document.getElementById('subModal').style.display = 'none'; }
+    function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+
+    function activateVoucher() {
+      const code = document.getElementById('voucherInput').value.trim().toUpperCase();
+      if (code === 'GAZA10' || code.startsWith('GZ-')) {
+        localStorage.setItem('tawjihi_sub', 'true');
+        isSubscribed = true;
+        checkSubscriptionStatus();
+        alert('تم تفعيل اشتراكك بنجاح لمدة 30 يوماً! جميع المواد أصبحت متاحة.');
+        closeSubModal();
+      } else {
+        alert('كود التفعيل غير صحيح. تأكد من الكود أو اطلب واحداً عبر واتساب.');
+      }
+    }
+
+    // بيانات تجريبية للاختبارات
+    const examData = {
+      'الفيزياء': [
+        { q: "ما هي وحدة قياس الدفع في النظام الدولي للوحدات؟", options: ["نيوتن.ثانية", "جول", "واط", "كيلوغرام.متر"], correct: 0, exp: "الدفع يساوي التغير في الزخم الخطي، ووحدته (N.s) أو (kg.m/s)." },
+        { q: "في التصادم المريم تماماً، أي الكميات التالية تبقى محفوظة؟", options: ["السرعة فقط", "الطاقة الحركية والزخم الخطي", "الطاقة الحركية وحدها", "طاقة الوضع فقط"], correct: 1, exp: "التصادم المرن يحفظ كل من الزخم الخطي والطاقة الحركية معاً." }
+      ],
+      'الرياضيات': [
+        { q: "ما مشتقة الاقتران ص = جتا(س) ؟", options: ["جياس", "-جياس", "ظاس", "-جتاس"], correct: 1, exp: "مشتقة جيب التمام (جتا) هي سالب الجيب (-جا س)." }
+      ],
+      'اللغة الإنجليزية': [
+        { q: "Choose the correct sentence: If I ___ hard, I would have passed the exam.", options: ["study", "studied", "had studied", "have studied"], correct: 2, exp: "هذه قاعدة الحالة الثالثة لـ If (الماضي التام + would have + تصريف ثالث)." }
+      ]
+    };
+
+    let currentSubject = '';
+    let currentQIndex = 0;
+
+    function openExam(subject, isFree) {
+      if (!isFree && !isSubscribed) {
+        openSubModal();
+        return;
+      }
+      currentSubject = subject;
+      currentQIndex = 0;
+      document.getElementById('examModalTitle').innerText = `بنك اختبارات: ${subject}`;
+      document.getElementById('examModal').style.display = 'flex';
+      loadQuestion();
+    }
+
+    function loadQuestion() {
+      const questions = examData[currentSubject] || examData['الفيزياء'];
+      if(currentQIndex >= questions.length) {
+        document.getElementById('qText').innerText = "لقد أتممت أسئلة هذه الوحدة بنجاح! 🎉";
+        document.getElementById('qOptions').innerHTML = '';
+        document.getElementById('qExp').style.display = 'none';
+        document.getElementById('nextBtn').style.display = 'none';
+        return;
+      }
+      const q = questions[currentQIndex];
+      document.getElementById('qText').innerText = `س ${currentQIndex+1}: ${q.q}`;
+      const optContainer = document.getElementById('qOptions');
+      optContainer.innerHTML = '';
+      q.options.forEach((opt, idx) => {
+        const div = document.createElement('div');
+        div.className = 'option';
+        div.innerText = opt;
+        div.onclick = () => checkAnswer(div, idx, q.correct, q.exp);
+        optContainer.appendChild(div);
+      });
+      document.getElementById('qExp').style.display = 'none';
+      document.getElementById('nextBtn').style.display = 'none';
+    }
+
+    function checkAnswer(element, selected, correct, exp) {
+      const options = document.querySelectorAll('.option');
+      options.forEach(opt => opt.style.pointerEvents = 'none');
+      if(selected === correct) {
+        element.classList.add('correct');
+      } else {
+        element.classList.add('wrong');
+        options[correct].classList.add('correct');
+      }
+      document.getElementById('qExpText').innerText = exp;
+      document.getElementById('qExp').style.display = 'block';
+      document.getElementById('nextBtn').style.display = 'block';
+    }
+
+    function nextQuestion() {
+      currentQIndex++;
+      loadQuestion();
+    }
+
+    // بيانات الفلاش كاردز
+    const flashData = {
+      'قوانين الفيزياء': [
+        { front: "الزخم الخطي (p)", back: "الكتلة × السرعة المتجهة (p = m × v)" },
+        { front: "الدفع (I)", back: "القوة × زمن التأثير (I = F × Δt = Δp)" }
+      ],
+      'قواعد الإنجليزي': [
+        { front: "Present Perfect (المضارع التام)", back: "Sub + has/have + V3 (يستخدم لأحداث انتهت ولها أثر)" }
+      ]
+    };
+
+    let currentFlashCategory = 'قوانين الفيزياء';
+    let currentFlashIndex = 0;
+
+    function openFlashcards(category) {
+      currentFlashCategory = category;
+      currentFlashIndex = 0;
+      document.getElementById('flashTitle').innerText = category;
+      document.getElementById('flashModal').style.display = 'flex';
+      loadFlashcard();
+    }
+
+    function loadFlashcard() {
+      const cards = flashData[currentFlashCategory];
+      const card = cards[currentFlashIndex % cards.length];
+      document.getElementById('flashFront').innerText = card.front;
+      document.getElementById('flashBack').innerText = card.back;
+    }
+
+    function nextCard() {
+      currentFlashIndex++;
+      loadFlashcard();
+    }
+  </script>
+</body>
+</html>
