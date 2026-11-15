@@ -3,70 +3,97 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>توجيهي بلس - غزة</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <title>توجيهي بلس - فلسطين</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="manifest" href="manifest.json">
   <style>
     :root {
-      --primary: #2563eb;
-      --primary-dark: #1d4ed8;
-      --accent: #0d9488;
+      --primary: #1e3a8a;       /* أزرق ملكي عميق وفاخر */
+      --primary-light: #3b82f6;
+      --gold: #d97706;          /* ذهبي دافئ وجذاب */
+      --gold-light: #f59e0b;
       --bg: #f8fafc;
       --card-bg: #ffffff;
-      --text: #1e293b;
+      --text: #0f172a;
       --text-muted: #64748b;
       --border: #e2e8f0;
-      --success: #10b981;
-      --error: #ef4444;
-      --radius: 16px;
+      --success: #059669;
+      --error: #dc2626;
+      --radius: 18px;
     }
 
     .dark-mode {
-      --bg: #0f172a;
-      --card-bg: #1e293b;
+      --bg: #090d16;
+      --card-bg: #131c2e;
       --text: #f8fafc;
       --text-muted: #94a3b8;
-      --border: #334155;
+      --border: #1e293b;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; transition: background 0.3s, color 0.3s; }
-    body { background-color: var(--bg); color: var(--text); padding-bottom: 90px; min-height: 100vh; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; transition: background 0.3s, color 0.3s, border 0.3s; }
+    body { background-color: var(--bg); color: var(--text); padding-bottom: 95px; min-height: 100vh; }
 
     header {
       background: var(--card-bg);
-      padding: 16px 20px;
+      padding: 14px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 2px solid var(--border);
       position: sticky;
       top: 0;
       z-index: 100;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
     }
-    .logo { font-size: 20px; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 8px; }
-    .header-actions { display: flex; gap: 10px; align-items: center; }
-    .icon-btn { background: var(--bg); border: 1px solid var(--border); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text); font-size: 16px; }
+    .logo-area { display: flex; align-items: center; gap: 10px; }
+    .logo-icon { width: 38px; height: 38px; background: linear-gradient(135deg, var(--primary), var(--gold)); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; }
+    .logo-text h1 { font-size: 17px; font-weight: 800; color: var(--primary); line-height: 1.2; }
+    .dark-mode .logo-text h1 { color: #60a5fa; }
+    .logo-text span { font-size: 10px; color: var(--gold); font-weight: 700; display: block; }
+
+    .header-actions { display: flex; gap: 8px; align-items: center; }
+    .icon-btn { background: var(--bg); border: 1px solid var(--border); width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text); font-size: 15px; }
 
     .container { max-width: 600px; margin: 0 auto; padding: 20px; }
 
-    .banner {
-      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    /* شريط اعتماد الوزارة الفاخر */
+    .moe-banner {
+      background: linear-gradient(135deg, #0f172a, #1e3a8a);
+      color: white;
+      padding: 16px 20px;
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border-right: 5px solid var(--gold);
+      box-shadow: 0 10px 25px -5px rgba(30, 58, 138, 0.25);
+    }
+    .moe-banner i { font-size: 28px; color: var(--gold); }
+    .moe-banner h3 { font-size: 14px; font-weight: 800; margin-bottom: 2px; }
+    .moe-banner p { font-size: 11px; opacity: 0.85; }
+
+    /* بانر الترويج والاشتراك */
+    .promo-card {
+      background: linear-gradient(135deg, #1e3a8a, #312e81);
       color: white;
       padding: 20px;
       border-radius: var(--radius);
       margin-bottom: 20px;
-      box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.2);
+      position: relative;
+      overflow: hidden;
     }
-    .banner h2 { font-size: 18px; margin-bottom: 8px; font-weight: 700; }
-    .banner p { font-size: 13px; opacity: 0.9; margin-bottom: 12px; }
-    .banner-btn { background: white; color: var(--primary); border: none; padding: 8px 16px; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 13px; }
+    .promo-card::after { content: '🎓'; position: absolute; left: -10px; bottom: -20px; font-size: 90px; opacity: 0.1; }
+    .promo-card h2 { font-size: 17px; margin-bottom: 6px; font-weight: 800; }
+    .promo-card p { font-size: 12px; opacity: 0.9; margin-bottom: 12px; line-height: 1.5; }
+    .promo-btn { background: var(--gold); color: #fff; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 800; cursor: pointer; font-size: 13px; box-shadow: 0 4px 10px rgba(217, 119, 6, 0.3); }
 
-    .tabs { display: flex; gap: 8px; margin-bottom: 20px; background: var(--card-bg); padding: 6px; border: 1px solid var(--border); border-radius: 12px; }
-    .tab { flex: 1; padding: 10px; text-align: center; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 14px; color: var(--text-muted); border: none; background: transparent; }
-    .tab.active { background: var(--primary); color: white; }
+    .tabs { display: flex; gap: 8px; margin-bottom: 20px; background: var(--card-bg); padding: 6px; border: 1px solid var(--border); border-radius: 14px; box-shadow: 0 2px 6px rgba(0,0,0,0.02); }
+    .tab { flex: 1; padding: 10px; text-align: center; border-radius: 10px; cursor: pointer; font-weight: 700; font-size: 13px; color: var(--text-muted); border: none; background: transparent; }
+    .tab.active { background: var(--primary); color: white; box-shadow: 0 4px 12px rgba(30, 58, 138, 0.2); }
 
-    .section-title { font-size: 16px; font-weight: 700; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
+    .section-title { font-size: 15px; font-weight: 800; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; color: var(--text); }
     .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 24px; }
     .card {
       background: var(--card-bg);
@@ -76,61 +103,79 @@
       cursor: pointer;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
     }
-    .card:hover { border-color: var(--primary); transform: translateY(-2px); }
-    .card i { font-size: 24px; color: var(--primary); margin-bottom: 10px; }
-    .card h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
-    .card p { font-size: 12px; color: var(--text-muted); }
-    .locked-badge { position: absolute; top: 12px; left: 12px; background: #fee2e2; color: #ef4444; font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 700; }
-    .unlocked-badge { position: absolute; top: 12px; left: 12px; background: #d1fae5; color: #059669; font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 700; }
+    .card:hover { border-color: var(--primary); transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0,0,0,0.05); }
+    .card i { font-size: 24px; color: var(--gold); margin-bottom: 10px; }
+    .card h3 { font-size: 15px; font-weight: 800; margin-bottom: 4px; }
+    .card p { font-size: 11px; color: var(--text-muted); }
+    .free-badge { position: absolute; top: 12px; left: 12px; background: #e0f2fe; color: #0284c7; font-size: 10px; padding: 2px 8px; border-radius: 20px; font-weight: 800; }
+    .vip-badge { position: absolute; top: 12px; left: 12px; background: #fef3c7; color: #d97706; font-size: 10px; padding: 2px 8px; border-radius: 20px; font-weight: 800; }
 
-    .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1000; align-items: center; justify-content: center; padding: 16px; }
-    .modal-content { background: var(--card-bg); width: 100%; max-width: 500px; border-radius: var(--radius); padding: 24px; max-height: 90vh; overflow-y: auto; position: relative; }
+    .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); z-index: 1000; align-items: center; justify-content: center; padding: 16px; }
+    .modal-content { background: var(--card-bg); width: 100%; max-width: 500px; border-radius: var(--radius); padding: 24px; max-height: 90vh; overflow-y: auto; position: relative; border: 1px solid var(--border); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2); }
     .close-modal { position: absolute; top: 16px; left: 16px; font-size: 20px; cursor: pointer; color: var(--text-muted); }
 
+    .question-counter { font-size: 11px; color: var(--gold); font-weight: 800; margin-bottom: 6px; text-transform: uppercase; }
     .question-box { margin-bottom: 16px; }
-    .question-title { font-size: 15px; font-weight: 700; margin-bottom: 12px; line-height: 1.5; }
+    .question-title { font-size: 15px; font-weight: 800; margin-bottom: 14px; line-height: 1.6; }
     .options { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
-    .option { background: var(--bg); border: 1px solid var(--border); padding: 12px 16px; border-radius: 10px; cursor: pointer; font-size: 14px; }
-    .option:hover { border-color: var(--primary); }
-    .option.correct { background: #d1fae5; border-color: #059669; color: #065f46; font-weight: 700; }
-    .option.wrong { background: #fee2e2; border-color: #ef4444; color: #991b1b; }
-    .explanation { background: var(--bg); border-right: 4px solid var(--primary); padding: 12px; border-radius: 8px; font-size: 13px; margin-bottom: 16px; display: none; }
+    .option { background: var(--bg); border: 1px solid var(--border); padding: 12px 16px; border-radius: 12px; cursor: pointer; font-size: 13px; font-weight: 600; }
+    .option:hover { border-color: var(--primary); background: rgba(59, 130, 246, 0.03); }
+    .option.correct { background: #d1fae5; border-color: #059669; color: #065f46; font-weight: 800; }
+    .option.wrong { background: #fee2e2; border-color: #dc2626; color: #991b1b; }
+    .explanation { background: var(--bg); border-right: 4px solid var(--gold); padding: 12px; border-radius: 8px; font-size: 12px; margin-bottom: 16px; display: none; line-height: 1.6; }
 
-    .flashcard { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 24px; text-align: center; min-height: 180px; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; margin-bottom: 16px; }
-    .flashcard h4 { font-size: 17px; color: var(--primary); margin-bottom: 8px; }
-    .flashcard p { font-size: 14px; color: var(--text-muted); }
+    .flashcard { background: var(--bg); border: 1px solid var(--border); border-radius: 14px; padding: 24px; text-align: center; min-height: 180px; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; margin-bottom: 16px; }
+    .flashcard h4 { font-size: 16px; color: var(--primary); margin-bottom: 8px; font-weight: 800; }
+    .flashcard p { font-size: 13px; color: var(--text-muted); }
 
-    .sub-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 2000; align-items: center; justify-content: center; padding: 20px; }
-    .sub-card { background: var(--card-bg); width: 100%; max-width: 400px; padding: 24px; border-radius: var(--radius); text-align: center; }
-    .sub-card h3 { margin-bottom: 12px; font-size: 18px; color: var(--primary); }
-    .sub-card p { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; line-height: 1.6; }
-    .sub-card input { width: 100%; padding: 12px; border: 1px solid var(--border); background: var(--bg); color: var(--text); border-radius: 8px; font-size: 16px; text-align: center; margin-bottom: 12px; text-transform: uppercase; }
-    .sub-card button { width: 100%; background: var(--primary); color: white; border: none; padding: 12px; border-radius: 8px; font-weight: 700; cursor: pointer; margin-bottom: 8px; }
+    .sub-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75); backdrop-filter: blur(5px); z-index: 2000; align-items: center; justify-content: center; padding: 20px; }
+    .sub-card { background: var(--card-bg); width: 100%; max-width: 400px; padding: 24px; border-radius: var(--radius); text-align: center; border: 1px solid var(--border); }
+    .sub-card h3 { margin-bottom: 8px; font-size: 18px; color: var(--primary); font-weight: 800; }
+    .sub-card p { font-size: 12px; color: var(--text-muted); margin-bottom: 16px; line-height: 1.6; }
+    .sub-card input { width: 100%; padding: 12px; border: 1px solid var(--border); background: var(--bg); color: var(--text); border-radius: 10px; font-size: 16px; text-align: center; margin-bottom: 12px; text-transform: uppercase; font-weight: 700; letter-spacing: 2px; }
+    .sub-card button { width: 100%; background: var(--primary); color: white; border: none; padding: 12px; border-radius: 10px; font-weight: 800; cursor: pointer; margin-bottom: 8px; font-size: 14px; }
+    .wa-btn { background: #059669 !important; }
 
-    .nav-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--card-bg); border-top: 1px solid var(--border); display: flex; justify-content: space-around; padding: 10px; z-index: 99; }
-    .nav-item { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 11px; color: var(--text-muted); cursor: pointer; background: none; border: none; }
-    .nav-item.active { color: var(--primary); font-weight: 700; }
+    .nav-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--card-bg); border-top: 1px solid var(--border); display: flex; justify-content: space-around; padding: 10px; z-index: 99; box-shadow: 0 -4px 15px rgba(0,0,0,0.03); }
+    .nav-item { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 10px; color: var(--text-muted); cursor: pointer; background: none; border: none; font-weight: 700; }
+    .nav-item.active { color: var(--primary); }
     .nav-item i { font-size: 18px; }
 
-    .btn-primary { background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 700; cursor: pointer; width: 100%; }
+    .btn-primary { background: var(--primary); color: white; border: none; padding: 12px 20px; border-radius: 10px; font-weight: 800; cursor: pointer; width: 100%; font-size: 14px; }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="logo"><i class="fa-solid fa-graduation-cap"></i> توجيهي بلس غزة</div>
+    <div class="logo-area">
+      <div class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+      <div class="logo-text">
+        <h1>توجيهي بلس</h1>
+        <span>منهاج فلسطين الرسمي</span>
+      </div>
+    </div>
     <div class="header-actions">
       <button class="icon-btn" onclick="toggleDarkMode()"><i class="fa-solid fa-moon" id="dark-icon"></i></button>
-      <button class="icon-btn" onclick="openSubModal()"><i class="fa-solid fa-key" style="color: #f59e0b;"></i></button>
+      <button class="icon-btn" onclick="openSubModal()"><i class="fa-solid fa-crown" style="color: var(--gold);"></i></button>
     </div>
   </header>
 
   <div class="container">
-    <div class="banner">
-      <h2>بنك الأسئلة الوزارية (منهاج فلسطين) 📱</h2>
-      <p>اشترك بـ 10 شيكل فقط شهرياً عبر (محفظتي أو Jawwal Pay) وافتح كافة الأسئلة والوزاريات بدون إنترنت.</p>
-      <button class="banner-btn" onclick="openSubModal()">فعّل حسابك الآن (كود 30 يوم)</button>
+    <!-- شريط اعتماد الوزارة -->
+    <div class="moe-banner">
+      <i class="fa-solid fa-award"></i>
+      <div>
+        <h3>معتمد وفق الامتحانات الوزارية</h3>
+        <p>أسئلة وزارية وتدريبات مركزة لطلبة الثانوية العامة (التوجيهي) في فلسطين.</p>
+      </div>
+    </div>
+
+    <div class="promo-card">
+      <h2>أول 10 أسئلة مجانية لكل مادة! 🎁</h2>
+      <p>جرّب البنك الآن بحرية. وعند إتمام الأسئلة المجانية، اشترك بـ 10 شيكل فقط شهرياً لفتح كافة أسئلة الوزارة وتفعيل وضع العمل بدون إنترنت.</p>
+      <button class="promo-btn" onclick="openSubModal()">اشتترك بـ 10 شيكل فقط</button>
     </div>
 
     <div class="tabs">
@@ -140,28 +185,31 @@
 
     <!-- قسم بنك الاختبارات -->
     <div id="exams-section">
-      <div class="section-title">اختر المادة الدراسية (توجيهي فلسطين)</div>
+      <div class="section-title">
+        <span>اختر المادة الدراسية</span>
+        <span style="font-size:11px; color: var(--gold); font-weight:700;"><i class="fa-solid fa-gift"></i> أول 10 أسئلة مجانية</span>
+      </div>
       <div class="grid">
-        <div class="card" onclick="openExam('الفيزياء', true)">
-          <span class="unlocked-badge">مفتوح مجاناً</span>
+        <div class="card" onclick="openExam('الفيزياء')">
+          <span class="free-badge">مجاني أول 10</span>
           <i class="fa-solid fa-atom"></i>
           <h3>الفيزياء</h3>
-          <p>الزخم والميكانيكا (وزاري)</p>
+          <p>الزخم والميكانيكا والكهرباء</p>
         </div>
-        <div class="card" onclick="openExam('الرياضيات', true)">
-          <span class="unlocked-badge">مفتوح مجاناً</span>
+        <div class="card" onclick="openExam('الرياضيات')">
+          <span class="free-badge">مجاني أول 10</span>
           <i class="fa-solid fa-square-root-variable"></i>
           <h3>الرياضيات (علمي)</h3>
           <p>التفاضل والتكامل</p>
         </div>
-        <div class="card" onclick="openExam('اللغة الإنجليزية', false)" id="card-eng">
-          <span class="locked-badge" id="badge-eng">مقفل (10 شيكل)</span>
+        <div class="card" onclick="openExam('اللغة الإنجليزية')">
+          <span class="free-badge">مجاني أول 10</span>
           <i class="fa-solid fa-book-open"></i>
           <h3>اللغة الإنجليزية</h3>
           <p>القواعد والقطع الوزارية</p>
         </div>
-        <div class="card" onclick="openExam('الكيمياء', false)" id="card-chem">
-          <span class="locked-badge" id="badge-chem">مقفل (10 شيكل)</span>
+        <div class="card" onclick="openExam('الكيمياء')">
+          <span class="free-badge">مجاني أول 10</span>
           <i class="fa-solid fa-flask"></i>
           <h3>الكيمياء</h3>
           <p>الحالة الغازية والعضوية</p>
@@ -191,11 +239,12 @@
   <div class="modal" id="examModal">
     <div class="modal-content">
       <span class="close-modal" onclick="closeModal('examModal')">&times;</span>
-      <h3 id="examModalTitle" style="margin-bottom: 16px; color: var(--primary);">عنوان الاختبار</h3>
+      <div class="question-counter" id="qCounter">السؤال 1 من أصل 15</div>
+      <h3 id="examModalTitle" style="margin-bottom: 14px; color: var(--primary); font-size: 16px;">بنك الاختبارات</h3>
       <div class="question-box">
         <div class="question-title" id="qText">السؤال سيظهر هنا...</div>
         <div class="options" id="qOptions"></div>
-        <div class="explanation" id="qExp"><strong>التوضيح الوزاري خطوة بخطوة:</strong> <br><span id="qExpText"></span></div>
+        <div class="explanation" id="qExp"><strong>الشرح الوزاري النموذجي:</strong> <br><span id="qExpText"></span></div>
       </div>
       <button class="btn-primary" id="nextBtn" onclick="nextQuestion()" style="display:none;">السؤال التالي</button>
     </div>
@@ -214,15 +263,15 @@
     </div>
   </div>
 
-  <!-- نافذة الاشتراك وتفعيل الكود -->
+  <!-- نافذة الاشتراك وتفعيل الكود (10 شيكل) -->
   <div class="sub-modal" id="subModal">
     <div class="sub-card">
       <span class="close-modal" style="position:static; float:left;" onclick="closeSubModal()">&times;</span>
-      <h3>اشتراك توجيهي بلس (10 شيكل)</h3>
-      <p>حّول 10 شيكل عبر محفظتي أو Jawwal Pay على الرقم: <br><strong style="color:var(--primary);">0590000000</strong><br>ثم راسل واتساب لإرسال الإيصال واستلام الكود.</p>
-      <input type="text" id="voucherInput" placeholder="أدخل كود التفعيل (مثل: GAZA10)">
-      <button onclick="activateVoucher()">تفعيل الاشتـراك فوراً</button>
-      <button style="background:transparent; color:var(--text-muted); border:1px solid var(--border);" onclick="window.open('https://wa.me/970590000000', '_blank')"><i class="fa-brands fa-whatsapp"></i> اطلب الكود عبر واتساب</button>
+      <h3>ترقية لحساب VIP (10 شيكل)</h3>
+      <p>لقد أتممت الأسئلة المجانية! لفتح **كافة الأسئلة والوزاريات بلا حدود** ولمدة 30 يوماً:<br>حّول 10 شيكل عبر محفظتي أو Jawwal Pay على الرقم:<br><strong style="color:var(--gold); font-size:16px;">0590000000</strong></p>
+      <input type="text" id="voucherInput" placeholder="أدخل كود التفعيل">
+      <button onclick="activateVoucher()">تفعيل الاشتراك فوراً</button>
+      <button class="wa-btn" onclick="window.open('https://wa.me/970590000000', '_blank')"><i class="fa-brands fa-whatsapp"></i> اطلب كود التفعيل عبر واتساب</button>
     </div>
   </div>
 
@@ -230,21 +279,11 @@
   <nav class="nav-bar">
     <button class="nav-item active" onclick="switchTab('exams')"><i class="fa-solid fa-pen-to-square"></i> الاختبارات</button>
     <button class="nav-item" onclick="switchTab('flashcards')"><i class="fa-solid fa-bolt"></i> الكبسولات</button>
-    <button class="nav-item" onclick="openSubModal()"><i class="fa-solid fa-crown" style="color:#f59e0b;"></i> الاشتراكات</button>
+    <button class="nav-item" onclick="openSubModal()"><i class="fa-solid fa-crown" style="color:var(--gold);"></i> الاشتراكات</button>
   </nav>
 
   <script>
     let isSubscribed = localStorage.getItem('tawjihi_sub') === 'true';
-
-    function checkSubscriptionStatus() {
-      if (isSubscribed) {
-        document.getElementById('badge-eng').innerText = 'مفتوح (اشتراك فعال)';
-        document.getElementById('badge-eng').className = 'unlocked-badge';
-        document.getElementById('badge-chem').innerText = 'مفتوح (اشتراك فعال)';
-        document.getElementById('badge-chem').className = 'unlocked-badge';
-      }
-    }
-    checkSubscriptionStatus();
 
     function switchTab(tab) {
       document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
@@ -273,100 +312,123 @@
       if (code === 'GAZA10' || code.startsWith('GZ-')) {
         localStorage.setItem('tawjihi_sub', 'true');
         isSubscribed = true;
-        checkSubscriptionStatus();
-        alert('تم تفعيل اشتراكك بنجاح لمدة 30 يوماً! جميع المواد أصبحت متاحة.');
+        alert('مبارك! تم تفعيل اشتراكك الـ VIP بنجاح لجميع المواد لمدة 30 يوماً.');
         closeSubModal();
       } else {
-        alert('كود التفعيل غير صحيح. تأكد من الكود أو اطلب واحداً عبر واتساب.');
+        alert('كود التفعيل غير صحيح. يجدر التواصل عبر واتساب لطلب الكود.');
       }
     }
 
-    // بنك الأسئلة المستخرج من منهاج توجيهي فلسطين
+    // بنك الأسئلة (لكل مادة 15 سؤالاً: أول 10 مجانية، والباقي مقفل لحين الاشتراك)
     const examData = {
       'الفيزياء': [
-        { 
-          q: "جسم كتلته ٢ كغم أثّرت عليه قوة محصّلة مقدارها ٨ نيوتن. ما مقدار تسارعه؟", 
-          options: ["٢ م/ث²", "٤ م/ث²", "٨ م/ث²", "١٦ م/ث²"], 
-          correct: 1, 
-          exp: "من قانون نيوتن الثاني: التسارع (ت) = القوة (ق) ÷ الكتلة (ك) = ٨ ÷ ٢ = ٤ م/ث²." 
-        },
-        { 
-          q: "ما وحدة قياس الدفع في النظام الدولي للوحدات (وزاري)؟", 
-          options: ["نيوتن.ثانية", "جول", "واط", "كيلوغرام.متر"], 
-          correct: 0, 
-          exp: "الدفع يساوي التغير في الزخم الخطي، ووحدته (N.s) أو (kg.m/s)." 
-        },
-        { 
-          q: "في التصادم المرن تماماً، أي الكميات التالية تبقى محفوظة؟", 
-          options: ["السرعة فقط", "الطاقة الحركية والزخم الخطي معاً", "الطاقة الحركية وحدها", "طاقة الوضع فقط"], 
-          correct: 1, 
-          exp: "التصادم المرن يحفظ كل من الزخم الخطي والطاقة الحركية الكلية للنظام." 
-        }
+        { q: "جسم كتلته ٢ كغم أثّرت عليه قوة محصّلة مقدارها ٨ نيوتن. ما مقدار تسارعه؟", options: ["٢ م/ث²", "٤ م/ث²", "٨ م/ث²", "١٦ م/ث²"], correct: 1, exp: "من قانون نيوتن الثاني: التبريد التسارع ت = ق ÷ ك = 8 ÷ 2 = 4 م/ث²." },
+        { q: "ما وحدة قياس الدفع في النظام الدولي للوحدات (وزاري)؟", options: ["نيوتن.ثانية", "جول", "واط", "كيلوغرام.متر"], correct: 0, exp: "الدفع يساوي التغير في الزخم الخطي، ووحدته (N.s)." },
+        { q: "في التصادم المرن تماماً، أي الكميات التالية تبقى محفوظة؟", options: ["السرعة فقط", "الطاقة الحركية والزخم الخطي معاً", "الطاقة الحركية وحدها", "طاقة الوضع فقط"], correct: 1, exp: "التصادم المرن يحفظ الزخم الخطي والطاقة الحركية معاً." },
+        { q: "ما العوامل التي يعتمد عليها الزخم الخطي لجسم متحرك؟", options: ["الكتلة والسرعة المتجهة", "الكتلة وتسارع الجاذبية", "القوة وزمن التأثير", "الطاقة الحركية وحدها"], correct: 0, exp: "الزخم الخطي p = m × v، فهو يعتمد على الكتلة والسرعة المتجهة." },
+        { q: "جسم كتلته 3 kg يتحرك بسرعة 4 m/s، ما مقدار زخمه الخطي؟", options: ["7 kg.m/s", "12 kg.m/s", "1.33 kg.m/s", "34 kg.m/s"], correct: 1, exp: "الزخم = 3 × 4 = 12 kg.m/s." },
+        { q: "إذا تضاعفت كتلة جسم مع ثبات سرعته، فماذا يحدث لزخمه الخطي؟", options: ["يقل للنصف", "يبقى كما هو", "يتضاعف مرتين", "يصبح ربعه"], correct: 2, exp: "العلاقة طردية بين الزخم والكتلة عند ثبات السرعة." },
+        { q: "اتجاه الدفع المؤثر على جسم يكون دائماً:", options: ["مع اتجاه القوة المحصلة المؤثرة", "عكس اتجاه الحركة", "عمودياً على السطح", "نحو مركز الأرض"], correct: 0, exp: "الدفع كمية متجهة واتجاهه نفس اتجاه القوة المحصلة." },
+        { q: "معدل التغير في الزخم الخطي بالنسبة للزمن يساوي:", options: ["الشغل المبذول", "القوة المحصلة المؤثرة", "الطاقة الحركية", "التسارع"], correct: 1, exp: "هذا هو النص الرياضي لقانون نيوتن الثاني بدلالة الزخم." },
+        { q: "وحدة قياس الزخم الخطي المكافئة لـ (N.s) هي:", options: ["Joule", "kg.m/s", "W.s", "N/m"], correct: 1, exp: "نيوتن.ثانية تكافئ تماماً كيلوغرام.متر لكل ثانية." },
+        { q: "في التصادم عديم المرونة، الطاقة الحركية للنظام:", options: ["تفظ بالكامل", "تتناقص وتتحول لأشكال أخرى", "تتضاعف", "لا تتغير نهائياً"], correct: 1, exp: "التصادم غير المرن يفقد جزءاً من الطاقة الحركية على شكل حرارة أو صوت." },
+        // الأسئلة من 11 إلى 15 (تتطلب اشتراك VIP)
+        { q: "[VIP] بندقية كتلتها 2kg تطلق رصاصة كتلتها 10g بسرعة 200m/s، ما سرعة ارتداد البندقية؟", options: ["1 m/s", "2 m/s", "0.5 m/s", "4 m/s"], correct: 0, exp: "من حفظ الزخم: ك1ع1 + ك2ع2 = صفر. ومنها ع = -(0.01 × 200) / 2 = -1 m/s." },
+        { q: "[VIP] الشغل المبذول بواسطة قوة خارجية لتغيير طاقة الحركة يساوي:", options: ["الدفع", "التغير في الطاقة الحركية", "الزخم الخطي", "الدفع الزاوي"], correct: 1, exp: "مبرهنة الشغل-طاقة الحركة." },
+        { q: "[VIP] متى يكون الزخم الخطي لنظام مكون من جسمين مساوياً للصفر؟", options: ["إذا كان الجسمان ساكنين", "إذا تساوى زخما الجسمين بالمقدار وعاكساه بالاتجاه", "أ و ب صحيحان", "لا يمكن أن يساوي صفراً"], correct: 2, exp: "يكون المجموع الجبري للزخم صفراً في الحالتين." },
+        { q: "[VIP] صاروخ يتحرك في الفضاء استهلك وقوده بسرعة ثابتة، ماذا يحدث لسرعته؟", options: ["تزداد", "تقل", "تبقى ثابتة", "تتوقف فوراً"], correct: 0, exp: "بسبب تناقص كتلته المستمرة مع ثبات الدفع تزداد السرعة." },
+        { q: "[VIP] مساحة تحت منحنى (القوة - الزمن) تمثل رياضياً:", options: ["الشغل", "الدفع", "التسارع", "القدرة"], correct: 1, exp: "المساحة تحت منحنى القوة والزمن تعطي الدفع الكلي." }
       ],
       'الرياضيات': [
-        { 
-          q: "ما مشتقة الاقتران ص = جتا(س) ؟", 
-          options: ["جا(س)", "-جا(س)", "ظا(س)", "-جتا(س)"], 
-          correct: 1, 
-          exp: "مشتقة جيب التمام (جتا س) هي سالب الجيب (-جا س) حسب قواعد الاشتقاق الأساسية." 
-        },
-        { 
-          q: "ما قيمة النهاية: نهاية (س² - 4) ÷ (س - 2) عندما س تؤول إلى 2؟", 
-          options: ["صفر", "2", "4", "غير متوفرة"], 
-          correct: 2, 
-          exp: "بتحليل البسط إلى (س-2)(س+2) واختصار (س-2)، نعوض س=2 في (س+2) فينتج 2 + 2 = 4." 
-        }
+        { q: "ما مشتقة الاقتران ص = جتا(س) ؟", options: ["جا(س)", "-جا(س)", "ظا(س)", "-جتا(س)"], correct: 1, exp: "مشتقة جيب التمام هي سالب الجيب." },
+        { q: "نحسب نهاية (س² - 4) ÷ (س - 2) عندما س تؤول إلى 2:", options: ["صفر", "2", "4", "غير متوفرة"], correct: 2, exp: "بالتحليل والاختصار ناتج التعويض هو 4." },
+        { q: "مشتقة الاقتران الثابت تساوي دائماً:", options: ["واحد", "صفر", "الاقتران نفسه", "ما لا نهاية"], correct: 1, exp: "مشتقة أي عدد ثابت تساوي صفراً." },
+        { q: "إذا كان ص = س³، فإن مشتقة ص بالنسبة لـ س هي:", options: ["3س", "3س²", "س²", "6س"], correct: 1, exp: "قاعدة القوة: ننزل الأس ونطرح منه 1." },
+        { q: "ميل المماس لمنحنى الاقتران عند نقطة عليه يمثل:", options: ["القيمة العظمى", "المشتقة الأولى عند تلك النقطة", "التكامل المحدود", "نهاية الاقتران"], correct: 1, exp: "التعريف الهندسي للمشتقة هو ميل المماس." },
+        { q: "مشتقة حاصل ضرب اقترانين تساوي:", options: ["مشتقة الأول × مشتقة الثاني", "الأول × مشتقة الثاني + الثاني × مشتقة الأول", "الاول ÷ الثاني", "مجموع المشتقات"], correct: 1, exp: "قاعدة ضرب اقترانين الشهيرة." },
+        { q: "تكامل العدد الثابت (أ) بالنسبة لـ س هو:", options: ["أ + ج", "أ س + ج", "صفر", "س² + ج"], correct: 1, exp: "تكامل الثابت يضرب في المتغير مضافاً له ثابت التكامل ج." },
+        { q: "ما تكامل الاقتران س² دَس؟", options: ["2س + ج", "(س³) / 3 + ج", "س³ + ج", "3س³ + ج"], correct: 1, exp: "نضيف للأس واحد ونقسم على الأس الجديد." },
+        { q: "نهاية (س) عندما س تؤول إلى 5 هي:", options: ["صفر", "1", "5", "غير موجودة"], correct: 2, exp: "بالتعويض المباشر الناتج هو 5." },
+        { q: "أي من التالي يمثل اقتراناً قابلاً للاشتقاق عند نقطة؟", options: ["أن يكون متصلاً ولديه مماس وحيد", "أن يكون منفصلاً", "أن يكون له زاوية حادة", "جميع ماسبق"], correct: 0, exp: "شرط الاشتقاق الأساسي هو الاتصال وعدم وجود أراس مدببة." },
+        // الأسئلة 11 إلى 15 (VIP)
+        { q: "[VIP] إذا كان ص = جيب(س)، فإن المشتقة الثانية ص'' تساوي:", options: ["-جتا(س)", "-جا(س)", "جتا(س)", "جا(س)"], correct: 1, exp: "مشتقة الجا جتا، ومشتقة الجتا سالب جا، إذن المشتقة الثانية سالب جا." },
+        { q: "[VIP] نقطة الانعطاف للاقتران هي النقطة التي يكون عندها:", options: ["المشتقة الثانية صفراً أو غير معرّفة مع تغير إشارتها", "المشتقة الأولى صفراً", "القيمة العظمى مطلقة", "النهاية غير موجودة"], correct: 0, exp: "تعريف نقطة الانعطاف في التفاضل." },
+        { q: "[VIP] التكامل المحدود يمثل هندسياً:", options: ["المساحة المحصورة تحت منحنى الاقتران", "ميل المماس", "سرعة الجسم", "حجم الكرة"], correct: 0, exp: "التفسير الهندسي للتكامل المحدود." },
+        { q: "[VIP] قيمة التكامل من 1 إلى 3 للعدد 4 دَس تساوي:", options: ["4", "8", "12", "16"], correct: 1, exp: "الفرق في الحدود (3-1) × الثابت 4 = 8." },
+        { q: "[VIP] معدل التغير المرتبط بالزمن يعتمد أساساً على قاعدة:", options: ["السلسلة (Chain Rule)", "القسمة", "التعويض المباشر", "الضرب التبادلي"], correct: 0, exp: "تستخدم قاعدة السلسلة في حل مسائل المعدلات المرتبطة." }
       ],
       'اللغة الإنجليزية': [
-        { 
-          q: "Choose the correct sentence: If I ___ hard, I would have passed the exam.", 
-          options: ["study", "studied", "had studied", "have studied"], 
-          correct: 2, 
-          exp: "هذه قاعدة الحالة الثالثة لـ If (الماضي التام had studied + جواب الشرط would have + V3)." 
-        },
-        { 
-          q: "Complete: Ibn Battuta was a famous ___ who travelled across the world.", 
-          options: ["chemist", "traveller", "inventor", "engineer"], 
-          correct: 1, 
-          exp: "ابن بطوطة كان رحالة مشهوراً (traveller) سافر عبر العالم." 
-        }
+        { q: "If I ___ hard, I would have passed the exam.", options: ["study", "studied", "had studied", "have studied"], correct: 2, exp: "الحالة الثالثة لـ If تتطلب ماضي تام (had studied)." },
+        { q: "Ibn Battuta was a famous ___ who travelled across the world.", options: ["chemist", "traveller", "inventor", "engineer"], correct: 1, exp: "ابن بطوطة رحالة (traveller)." },
+        { q: "She has been working here ___ three years.", options: ["since", "for", "from", "during"], correct: 1, exp: "تستخدم for مع المدة الزمنية المحددة." },
+        { q: "By this time next year, we ___ our school.", options: ["will finish", "will have finished", "finish", "finished"], correct: 1, exp: "المستقبل التام by this time next year." },
+        { q: "Choose the correct spelling:", options: ["Successful", "Sucesful", "Succesfull", "Sucsessful"], correct: 0, exp: "التهجئة الصحيحة successful." },
+        { q: "Ali asked me where ___.", options: ["do I live", "I lived", "did I live", "living"], correct: 1, exp: "الكلام المنقول (Indirect speech) يحول الفعل للماضي ويصبح الفاعل قبل الفعل." },
+        { q: "The new project ___ next Monday.", options: ["starts", "started", "is starting", "will start"], correct: 0, exp: "المضارع البسيط للحديث عن جداول مواعيد رسمية." },
+        { q: "If only I ___ earlier this morning!", options: ["get up", "got up", "had got up", "have got up"], correct: 2, exp: "التمني في الماضي (If only + Past Perfect)." },
+        { q: "Water ___ at 100 degrees Celsius.", options: ["boil", "boils", "boiled", "is boiling"], correct: 1, exp: "حقائق علمية ثابتة تستخدم المضارع البسيط." },
+        { q: "He speaks English very ___.", options: ["good", "fluent", "fluently", "bad"], correct: 2, exp: "نستخدم الحال (Adverb) وصف الفعل بـ fluently." },
+        // VIP
+        { q: "[VIP] Neither Ali nor his friends ___ coming to the party.", options: ["is", "are", "was", "has"], correct: 1, arg: 1, exp: "الفعل يتبع الاسم الأقرب في Neither...nor (friends جمع فيأخذ are)." },
+        { q: "[VIP] It is essential that he ___ on time.", options: ["arrive", "arrives", "arrived", "arriving"], correct: 0, exp: "صيغة الشك أو الطلب (Subjunctive mood) يأخذ الفعل مجرداً." },
+        { q: "[VIP] Hard ___ he work, he couldn't pass the test.", options: ["though", "as", "however", "all of them"], correct: 3, exp: "تدل على التناقض بأساليب مختلفة في الإنجليزية المتقدمة." },
+        { q: "[VIP] The report ___ by the manager yesterday.", options: ["wrote", "was written", "is written", "writing"], correct: 1, exp: "المبني للمجهول في الماضي البسيط (was/were + V3)." },
+        { q: "[VIP] I wish I ___ a car now.", options: ["have", "had", "will have", "had had"], correct: 1, exp: "التمني في الحاضر يستخدم الماضي البسيط (had)." }
       ],
       'الكيمياء': [
-        { 
-          q: "بالون مملوء بغاز الهيليوم حجمه 300 mL عند ضغط 1 atm، ارتفع حتى أصبح الضغط 0.63 atm. احسب حجمه الجديد.", 
-          options: ["476.2 mL", "300 mL", "189 mL", "500 mL"], 
-          correct: 0, 
-          exp: "باستخدام قانون بويل (ثبات درجة الحرارة): P1V1 = P2V2 إذن V2 = (1 × 300) ÷ 0.63 ≈ 476.2 mL." 
-        }
+        { q: "بالون مملوء بغاز الهيليوم حجمه 300 mL عند ضغط 1 atm، ارتفع حتى أصبح الضغط 0.63 atm. احسب حجمه الجديد.", options: ["476.2 mL", "300 mL", "189 mL", "500 mL"], correct: 0, exp: "قانون بويل P1V1 = P2V2." },
+        { q: "العلاقة بين حجم الغاز ودرجة حرارته المطلقة عند ثبات الضغط هي:", options: ["علاقة عكسية", "علاقة طردية (قانون شارل)", "ثابتة لا تتغير", "علاقة أسية"], correct: 1, exp: "قانون شارل ينص على أن حجم الغاز يتناسب طردياً مع درجة الحرارة المطلقة." },
+        { q: "أي الغازات التالية يُعد الأكثر مثالية في الظروف العادية؟", options: ["الهيليوم He", "الأمونيا NH3", "بخار الماء H2O", "ثاني أكسيد الكربون CO2"], correct: 0, exp: "الغازات النبيلة الخفيفة كالهيليوم هي الأقرب للسلوك المثالي." },
+        { q: "الضغط المعياري (STP) يقدر بـ:", options: ["1 atm و 0 °C", "2 atm و 25 °C", "1 atm و 100 °C", "0.5 atm و 0 °C"], correct: 0, exp: "الظروف المعيارية للغازات هي ضغط 1 جو ودرجة حرارة صفر مئوي." },
+        { q: "الحجم المولي لأي غاز مثالي في الظروف المعيارية (STP) يساوي:", options: ["22.4 لتر", "1 لتر", "10 لتر", "24.5 لتر"], correct: 1, exp: "حجم المول الواحد من أي غاز مثالي في STP هو 22.4 L." },
+        { q: "الصيغة العامة للألكانات هي:", options: ["CnH2n", "CnH2n+2", "CnH2n-2", "CnHn"], correct: 1, exp: "الألكانات هيدروكربونات مشبعة صيغتها CnH2n+2." },
+        { q: "ما اسم المركب أبسط ألكان في الكيمياء العضوية؟", options: ["إيثان", "ميثان", "بروبان", "بيوتان"], correct: 1, exp: "الميثان CH4 هو أبسط هيدروكربون ألكاني." },
+        { q: "المركب العضوي الذي يحتوي على رابطة ثنائية يسمى:", options: ["ألكان", "ألكين", "ألكاين", "كحول"], correct: 1, exp: "الألكينات تحتوي على روابط ثنائية (C=C)." },
+        { q: "عملية تحويل الكحول إلى ألديهايد تُعد عملية:", options: ["اختزال", "تأكسد", "هدرجة", "تمبره"], correct: 1, exp: "تأكسد الكحولات الأولية يعطي ألديهيدات ثم أحماض كربوكسيلية." },
+        { q: "ما الوظيفة الأساسية للمجموعة الفعالة (الهيدروكسيل -OH)؟", options: ["تمييز الكحولات", "تمييز الإيثرات", "تمييز الألكانات", "تمييز الهاليدات"], correct: 0, exp: "مجموعة الهيدروكسيل هي المميزة لعائلة الكحولات." },
+        // VIP
+        { q: "[VIP] ما نوع الهجرات في ذرة الكربون في الألكاينات؟", options: ["sp3", "sp2", "sp", "d2sp3"], correct: 2, exp: "الألكاينات التي تحتوي على رابطة ثلاثية يكون تهجين كرتونها sp." },
+        { q: "[VIP] مركب عضوي صيغته الجزيئية C2H6O، قد يمثل:", options: ["كحول إيثيلي أو إيثيل ميثيل إيثر", "حمض أسيتيك فقط", "ألدهيد فقط", "ألكان حلقي"], correct: 0, exp: "هذه الصيغة تمثل إيثرات أو كحولات (تشكل متصاوغات - Isomers)." },
+        { q: "[VIP] قانون الغاز المثالي يكتب رياضياً بالشكل:", options: ["PV = nRT", "P = VRT", "V = nPT", "P/V = RT"], correct: 0, exp: "PV = nRT." },
+        { q: "[VIP] عند زيادة الضغط على غاز محصور مع ثبات الحرارة، فإن الحجم:", options: ["يزداد", "يقل", "يبقى ثابتاً", "ينعدم"], correct: 1, exp: "علاقة عكسية حسب قانون بويل." },
+        { q: "[VIP] أي العائلات العضوية التالية تعتبر غير قطبية بشكل أساسي؟", options: ["الألكانات", "الكحولات", "الأحماض الكربوكسيلية", "الإيثرات"], correct: 0, exp: "الألكانات هيدروكربونات غير قطبية." }
       ]
     };
 
     let currentSubject = '';
     let currentQIndex = 0;
 
-    function openExam(subject, isFree) {
-      if (!isFree && !isSubscribed) {
-        openSubModal();
-        return;
-      }
+    function openExam(subject) {
       currentSubject = subject;
       currentQIndex = 0;
-      document.getElementById('examModalTitle').innerText = `بنك اختبارات: ${subject}`;
+      document.getElementById('examModalTitle').innerText = `بنك اختبارات: ${subject} (فلسطين)`;
       document.getElementById('examModal').style.display = 'flex';
       loadQuestion();
     }
 
     function loadQuestion() {
       const questions = examData[currentSubject] || examData['الفيزياء'];
+      
+      // نظام قفل الأسئلة بعد السؤال العاشر إذا لم يكن مشتركاً
+      if (currentQIndex >= 10 && !isSubscribed) {
+        document.getElementById('examModal').style.display = 'none';
+        openSubModal();
+        return;
+      }
+
       if(currentQIndex >= questions.length) {
-        document.getElementById('qText').innerText = "لقد أتممت أسئلة هذه الوحدة بنجاح! 🎉 بانتظار إضافات وزارية جديدة.";
+        document.getElementById('qCounter').innerText = "إنهاء الاختبار";
+        document.getElementById('qText').innerText = "أحسنت! لقد أتممت كافة أسئلة هذه المادة بجدارة 🎉";
         document.getElementById('qOptions').innerHTML = '';
         document.getElementById('qExp').style.display = 'none';
         document.getElementById('nextBtn').style.display = 'none';
         return;
       }
+
+      document.getElementById('qCounter').innerText = `السؤال ${currentQIndex + 1} من أصل ${questions.length}`;
       const q = questions[currentQIndex];
-      document.getElementById('qText').innerText = `س ${currentQIndex+1}: ${q.q}`;
+      document.getElementById('qText').innerText = q.q;
+      
       const optContainer = document.getElementById('qOptions');
       optContainer.innerHTML = '';
       q.options.forEach((opt, idx) => {
