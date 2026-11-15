@@ -27,8 +27,7 @@
             </div>
             
             <div class="flex items-center gap-2">
-                <button onclick="toggleDarkMode()" class="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 transition text-slate-700">🌙</button>
-                <button onclick="openVipModal()" class="p-2 rounded-xl bg-amber-500 hover:bg-amber-600 transition text-slate-900 font-bold">👑</button>
+                <button onclick="openVipModal()" class="p-2 rounded-xl bg-amber-500 hover:bg-amber-600 transition text-slate-900 font-bold shadow">👑</button>
             </div>
         </div>
     </header>
@@ -37,7 +36,7 @@
     <main class="container mx-auto p-4 flex-grow max-w-4xl w-full">
         
         <!-- بانر وزارة التربية والتعليم -->
-        <div class="bg-gradient-to-l from-slate-900 to-indigo-950 text-white rounded-3xl p-6 mb-6 shadow-xl relative overflow-hidden text-center border border-indigo-900">
+        <div id="main-banner" class="bg-gradient-to-l from-slate-900 to-indigo-950 text-white rounded-3xl p-6 mb-6 shadow-xl relative overflow-hidden text-center border border-indigo-900">
             <div class="absolute -left-6 -bottom-6 text-indigo-800/30 text-9xl font-black">📋</div>
             <div class="relative z-10 flex flex-col items-center">
                 <span class="bg-amber-500 text-slate-950 text-xs font-black px-3 py-1 rounded-full mb-2 shadow">معتمد رسمياً</span>
@@ -47,7 +46,7 @@
         </div>
 
         <!-- أزرار تبديل الفروع (العلمي والأدبي) -->
-        <div class="bg-white p-1.5 rounded-2xl border border-slate-200 flex mb-6 shadow-sm">
+        <div id="branch-tabs" class="bg-white p-1.5 rounded-2xl border border-slate-200 flex mb-6 shadow-sm">
             <button id="btn-sci" onclick="switchBranch('sci')" class="flex-1 py-3 rounded-xl font-bold text-sm transition-all bg-indigo-950 text-white shadow">الفرع العلمي</button>
             <button id="btn-lit" onclick="switchBranch('lit')" class="flex-1 py-3 rounded-xl font-bold text-sm transition-all text-slate-600 hover:text-slate-900">الفرع الأدبي</button>
         </div>
@@ -58,28 +57,24 @@
                 <h3 class="font-black text-slate-900 text-sm">مواد الفرع العلمي</h3>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <!-- كارد الفيزياء -->
                 <div onclick="loadSubject('physics', 'الفيزياء (علمي)')" class="bg-white hover:border-amber-400 border border-slate-200 p-5 rounded-3xl transition-all cursor-pointer shadow-sm hover:shadow-md group relative">
                     <span class="absolute top-4 left-4 bg-amber-50 text-amber-700 border border-amber-200 text-[10px] font-bold px-2.5 py-1 rounded-full">أول 10 مجاناً</span>
                     <div class="text-3xl mb-3">⚡</div>
                     <h4 class="font-black text-slate-900 text-base mb-1 group-hover:text-amber-600 transition">الفيزياء</h4>
                     <p class="text-xs text-slate-500">الزخم والميكانيكا</p>
                 </div>
-                <!-- كارد الرياضيات -->
                 <div onclick="loadSubject('math_sci', 'الرياضيات (علمي)')" class="bg-white hover:border-amber-400 border border-slate-200 p-5 rounded-3xl transition-all cursor-pointer shadow-sm hover:shadow-md group relative">
                     <span class="absolute top-4 left-4 bg-amber-50 text-amber-700 border border-amber-200 text-[10px] font-bold px-2.5 py-1 rounded-full">أول 10 مجاناً</span>
                     <div class="text-3xl mb-3">📐</div>
                     <h4 class="font-black text-slate-900 text-base mb-1 group-hover:text-amber-600 transition">الرياضيات</h4>
                     <p class="text-xs text-slate-500">التفاضل والتكامل</p>
                 </div>
-                <!-- كارد الكيمياء -->
                 <div onclick="loadSubject('chemistry', 'الكيمياء (علمي)')" class="bg-white hover:border-amber-400 border border-slate-200 p-5 rounded-3xl transition-all cursor-pointer shadow-sm hover:shadow-md group relative">
                     <span class="absolute top-4 left-4 bg-amber-50 text-amber-700 border border-amber-200 text-[10px] font-bold px-2.5 py-1 rounded-full">أول 10 مجاناً</span>
                     <div class="text-3xl mb-3">🧪</div>
                     <h4 class="font-black text-slate-900 text-base mb-1 group-hover:text-amber-600 transition">الكيمياء</h4>
                     <p class="text-xs text-slate-500">العضوية والغازات</p>
                 </div>
-                <!-- كارد العلوم الحياتية -->
                 <div onclick="loadSubject('biology', 'العلوم الحياتية (علمي)')" class="bg-white hover:border-amber-400 border border-slate-200 p-5 rounded-3xl transition-all cursor-pointer shadow-sm hover:shadow-md group relative">
                     <span class="absolute top-4 left-4 bg-amber-50 text-amber-700 border border-amber-200 text-[10px] font-bold px-2.5 py-1 rounded-full">أول 10 مجاناً</span>
                     <div class="text-3xl mb-3">🧬</div>
@@ -89,282 +84,11 @@
             </div>
         </section>
 
-        <!-- قسم مواد الفرع الأدبي (مخفي افتراضياً حتى يتم الضغط على تبديل الفرع الأدبي) -->
+        <!-- قسم مواد الفرع الأدبي -->
         <section id="section-lit" class="mb-8 hidden">
             <div class="flex items-center justify-between mb-4">
                 <h3 class="font-black text-slate-900 text-sm">مواد الفرع الأدبي</h3>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <!-- كارد العربية تخصص -->
                 <div onclick="loadSubject('arabic', 'اللغة العربية (تخصص)')" class="bg-white hover:border-amber-400 border border-slate-200 p-5 rounded-3xl transition-all cursor-pointer shadow-sm hover:shadow-md group relative">
-                    <span class="absolute top-4 left-4 bg-amber-50 text-amber-700 border border-amber-200 text-[10px] font-bold px-2.5 py-1 rounded-full">أول 10 مجاناً</span>
-                    <div class="text-3xl mb-3">📚</div>
-                    <h4 class="font-black text-slate-900 text-base mb-1 group-hover:text-amber-600 transition">العربية تخصص</h4>
-                    <p class="text-xs text-slate-500">البلاغة والنقد والأدب</p>
-                </div>
-                <!-- كارد التاريخ -->
-                <div onclick="loadSubject('history', 'الدراسات التاريخية')" class="bg-white hover:border-amber-400 border border-slate-200 p-5 rounded-3xl transition-all cursor-pointer shadow-sm hover:shadow-md group relative">
-                    <span class="absolute top-4 left-4 bg-amber-50 text-amber-700 border border-amber-200 text-[10px] font-bold px-2.5 py-1 rounded-full">أول 10 مجاناً</span>
-                    <div class="text-3xl mb-3">🏛️</div>
-                    <h4 class="font-black text-slate-900 text-base mb-1 group-hover:text-amber-600 transition">التاريخ</h4>
-                    <p class="text-xs text-slate-500">التاريخ الحديث والمعاصر</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- صندوق الاختبار (يظهر عند الدخول لأي مادة) -->
-        <section id="quiz-section" class="hidden bg-white border border-slate-200 rounded-3xl p-6 shadow-xl">
-            <div class="flex justify-between items-center mb-4 border-b border-slate-100 pb-3">
-                <span id="quiz-subject-title" class="text-indigo-950 font-black text-sm">اسم المادة</span>
-                <span id="question-counter" class="text-xs bg-slate-100 text-slate-600 px-3 py-1 rounded-full font-bold">السؤال 1 من أصل 0</span>
-            </div>
-
-            <!-- السؤال -->
-            <div id="question-box" class="mb-5 text-base font-bold leading-relaxed text-slate-900">
-                جاري التحميل...
-            </div>
-
-            <!-- الخيارات -->
-            <div id="options-box" class="space-y-3 mb-5"></div>
-
-            <!-- التوضيح الوزاري -->
-            <div id="explanation-box" class="hidden bg-amber-50 border border-amber-200 p-4 rounded-2xl text-xs mb-4 text-amber-900">
-                <span class="font-bold block mb-1">💡 التوضيح الوزاري:</span>
-                <p id="explanation-text" class="leading-relaxed"></p>
-            </div>
-
-            <!-- أزرار التحكم -->
-            <div class="flex justify-between items-center mt-6 pt-3 border-t border-slate-100">
-                <button onclick="backToSubjects()" class="text-slate-500 hover:text-slate-900 text-xs font-bold px-3 py-2 transition">
-                    ← إرجاع للمواد
-                </button>
-                <button id="next-btn" onclick="nextQuestion()" class="hidden bg-indigo-950 hover:bg-indigo-900 text-white font-bold px-6 py-2.5 rounded-xl text-xs transition shadow-md">
-                    السؤال التالي ←
-                </button>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- شريط التنقل السفلي تماماً كالرسمة -->
-    <nav class="bg-white border-t border-slate-200 py-3 px-6 sticky bottom-0 z-40 shadow-lg">
-        <div class="container mx-auto max-w-4xl flex justify-around items-center text-center">
-            <button onclick="switchBranch('sci')" class="flex flex-col items-center text-indigo-950 font-bold text-xs gap-1 group">
-                <span class="text-xl">⚡</span>
-                <span>الفرع العلمي</span>
-            </button>
-            <button onclick="switchBranch('lit')" class="flex flex-col items-center text-slate-400 hover:text-slate-800 text-xs gap-1 group">
-                <span class="text-xl">📚</span>
-                <span>الفرع الأدبي</span>
-            </button>
-            <button onclick="openVipModal()" class="flex flex-col items-center text-amber-600 font-bold text-xs gap-1 group">
-                <span class="text-xl">👑</span>
-                <span>اشتراك 10 شيكل</span>
-            </button>
-        </div>
-    </nav>
-
-    <!-- نافذة إدخال كود VIP -->
-    <div id="vip-modal" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
-        <div class="bg-white border border-slate-200 w-full max-w-sm p-6 rounded-3xl shadow-2xl text-slate-900">
-            <h3 class="text-base font-black text-slate-900 mb-1">تفعيل الباقة الكاملة (10 شيكل)</h3>
-            <p class="text-xs text-slate-500 mb-4 leading-relaxed">أدخل كود التفعيل الخاص بك لفتح مئات الأسئلة الوزارية بلا حدود:</p>
-            <input type="text" id="vip-code-input" placeholder="مثال: GAZA10" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-center text-indigo-950 font-bold tracking-widest mb-4 focus:outline-none focus:border-indigo-600 text-sm">
-            <div class="flex space-x-2 space-x-reverse">
-                <button onclick="activateVip()" class="flex-1 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-2.5 rounded-xl text-xs transition">تفعيل الآن</button>
-                <button onclick="closeVipModal()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2.5 rounded-xl text-xs transition">إلغاء</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- جافاسكريبت التشغيل الشامل والآمن -->
-    <script>
-        const questionBanks = {
-            physics: {
-                subject: "الفيزياء - الفرع العلمي",
-                questions: [
-                    { q: "جسم كتلته 2kg أثّرت عليه قوة محصّلة مقدارها 8N، ما مقدار تسارعه؟", options: ["2 m/s²", "4 m/s²", "8 m/s²", "16 m/s²"], correct: 1, exp: "من قانون نيوتن الثاني: التسارع = القوة المحصلة ÷ الكتلة = 8 ÷ 2 = 4 م/ث²." },
-                    { q: "ما وحدة قياس الدفع في النظام الدولي للوحدات؟", options: ["N.s", "Joule", "Watt", "kg.m"], correct: 0, exp: "الدفع يساوي التغير في الزخم الخطي، ووحدته نيوتن.ثانية (N.s)." },
-                    { q: "في التصادم المرن تماماً، الكميات الفيزيائية المحفوظة هي:", options: ["السرعة فقط", "الطاقة الحركية والزخم الخطي معاً", "الطاقة الحركية وحدها", "طاقة الوضع فقط"], correct: 1, exp: "التصادم المرن يحفظ كلا من الزخم الخطي والطاقة الحركية الكلية للنظام." },
-                    { q: "العوامل التي يعتمد عليها الزخم الخطي لجسم متحرك هي:", options: ["الكتلة والسرعة المتجهة", "القوة والزمن", "الكتلة والتسارع", "المسافة والزمن"], correct: 0, exp: "الزخم الخطي يعتمد طردياً على الكتلة والسرعة المتجهة." },
-                    { q: "إذا تضاعفت سرعة جسم متحرك مع ثبات كتلته، فإن زخمه الخطي:", options: ["يقل للنصف", "يتضاعف مرتين", "يبقى ثابتاً", "يصبح ربعه"], correct: 1, exp: "العلاقة طردية خطية بين الزخم الخطي والسرعة عند ثبات الكتلة." },
-                    { q: "اتجاه الدفع المؤثر على جسم يكون دائماً في اتجاه:", options: ["القوة المحصلة المؤثرة", "عكس اتجاه الحركة", "السرعة الابتدائية", "الجاذبية الأرضية"], correct: 0, exp: "الدفع كمية متجهة يتطابق اتجاهه تماماً مع اتجاه القوة المحصلة المؤثرة." },
-                    { q: "معدل التغير الزمني للزخم الخطي لجسم يساوي:", options: ["الشغل المبذول", "القوة المحصلة", "الدفع الكلي", "الطاقة الحركية"], correct: 1, exp: "نص قانون نيوتن الثاني: القوة المحصلة تساوي معدل التغير الزمني في الزخم الخطي." },
-                    { q: "وحدة قياس (kg.m/s) تكافئ وحدة:", options: ["N.s", "Joule", "Pascal", "Watt"], correct: 0, exp: "كيلوغرام.متر لكل ثانية مكافئة تماماً لنيوتن.ثانية." },
-                    { q: "في التصادم عديم المرونة، تكون الطاقة الحركية بعد التصادم:", options: ["أكبر من قبل التصادم", "أقل من قبل التصادم", "مساوية تماماً", "تساوي صفراً"], correct: 1, exp: "يحدث فقد جزئي في الطاقة الحركية وتحولها لأشكال أخرى." },
-                    { q: "المساحة تحت منحنى (القوة - الزمن) تمثل رياضياً:", options: ["الشغل", "الدفع", "التسارع", "القدرة"], correct: 1, exp: "المساحة المحصورة تحت منحنى القوة والزمن تعطي الدفع المؤثر." }
-                ]
-            },
-            math_sci: {
-                subject: "الرياضيات - الفرع العلمي",
-                questions: [
-                    { q: "ما مشتقة الاقتران ص = جتا(س)؟", options: ["جا(س)", "-جا(س)", "ظا(س)", "-جتا(س)"], correct: 1, exp: "مشتقة جيب التمام (جتا س) هي سالب الجيب (-جا س)." },
-                    { q: "قيمة نهاية (س² - 4) ÷ (س - 2) عندما س تؤول إلى 2:", options: ["صفر", "2", "4", "غير متوفرة"], correct: 2, exp: "بتحليل البسط إلى (س-2)(س+2) واختصار المقام، ينتج التعويض بـ 2 + 2 = 4." },
-                    { q: "مشتقة أي اقتران ثابت تساوي:", options: ["واحد", "صفر", "الاقتران نفسه", "ما لا نهاية"], correct: 1, exp: "مشتقة أي عدد ثابت تساوي صفراً دائماً." },
-                    { q: "إذا كان ص = س³، فإن ص' تساوي:", options: ["3س", "3س²", "س²", "6س"], correct: 1, exp: "باستخدام قاعدة القوة: ننزل الأس ونطرح منه 1 فيصبح الناتج 3س²." },
-                    { q: "ميل المماس لمنحنى الاقتران عند نقطة عليه يمثل:", options: ["المشتقة الأولى عند تلك النقطة", "التكامل المحدود", "نهاية الاقتران", "الصفر"], correct: 0, exp: "التفسير الهندسي للمشتقة الأولى هو ميل المماس للمنحنى." }
-                ]
-            },
-            chemistry: {
-                subject: "الكيمياء - الفرع العلمي",
-                questions: [
-                    { q: "[وزاري] المادة التي لها القدرة على منح بروتون لمادة أخرى حسب مفهوم برونستد-لوري تسمى:", options: ["حمض", "قاعدة", "ملح متعادل", "أكسيد فلزي"], correct: 0, exp: "الحمض حسب برونستد-لوري هو المادة مانحة البروتون (H+)." },
-                    { q: "[وزاري] قيمة الرقم الهيدروجيني pH لمحلول حمض قوي تركيزه (0.01 M) تساوي:", options: ["2", "7", "12", "1"], correct: 0, exp: "تركيز أيون الهيدروجين يساوي تركيز الحمض (10^-2)، إذن pH = 2." }
-                ]
-            },
-            biology: {
-                subject: "العلوم الحياتية - الفرع العلمي",
-                questions: [
-                    { q: "[وزاري] العضية الخلوية المسؤولة عن إنتاج الطاقة (ATP) في الخلية الحية هي:", options: ["الميتوكندريا", "الريبوسومات", "جهاز غولجي", "البلاستيدات الخضراء"], correct: 0, exp: "الميتوكندريا تُعرف ببيت الطاقة في الخلية وتتم فيها عمليات التنفس الخلوي وإنتاج ATP." }
-                ]
-            },
-            arabic: {
-                subject: "اللغة العربية (تخصص) - الفرع الأدبي",
-                questions: [
-                    { q: "[وزاري] ما الفن الأدبي الذي يغلب عليه التعبير عن العواطف الذاتية والمشاعر الحزينة أو الحنين؟", options: ["المسرحية", "الرثاء", "المقالة", "القصة القصيرة"], correct: 1, exp: "الرثاء هو الفن الشعري المختص بتعداد محاسن الميت والتعبير عن لوعة الفراق والحزن." },
-                    { q: "[وزاري] ما نوع الصورة البيانية في قول الشاعر (بكت السماء لفراقنا)؟", options: ["تشبيه بليغ", "استعارة مكنية", "استعارة تصريحية", "كنية"], correct: 1, exp: "شبه السماء بإنسان يبكي وحذف المشبه به، وهي استعارة مكنية." }
-                ]
-            },
-            history: {
-                subject: "الدراسات التاريخية - الفرع الأدبي",
-                questions: [
-                    { q: "[وزاري] الاتفاقية التي قسّمت مناطق الهلال الخصيب بين بريطانيا وفرنسا بعد الحرب العالمية الأولى هي:", options: ["سايكس بيكو", "بلفور", "سان ريمو", "لوزان"], correct: 0, exp: "اتفاقية سايكس بيكو السرية عام 1916 قسّمت مناطق النفوذ بين الدولتين." },
-                    { q: "[وزاري] في أي عام صدر وعد بلفور المشئوم الذي أعطى حق لليهود في فلسطين؟", options: ["1917 م", "1920 م", "1948 م", "1936 م"], correct: 0, exp: "صدر وعد بلفور في الثاني من نوفمبر عام 1917 ميلادي." }
-                ]
-            }
-        };
-
-        let currentQuestions = [];
-        let currentIndex = 0;
-        let isVip = localStorage.getItem('tawjihi_vip') === 'true';
-
-        function switchBranch(branch) {
-            const btnSci = document.getElementById('btn-sci');
-            const btnLit = document.getElementById('btn-lit');
-            const secSci = document.getElementById('section-sci');
-            const secLit = document.getElementById('section-lit');
-
-            if (branch === 'sci') {
-                btnSci.className = "flex-1 py-3 rounded-xl font-bold text-sm transition-all bg-indigo-950 text-white shadow";
-                btnLit.className = "flex-1 py-3 rounded-xl font-bold text-sm transition-all text-slate-600 hover:text-slate-900";
-                secSci.classList.remove('hidden');
-                secLit.classList.add('hidden');
-            } else {
-                btnLit.className = "flex-1 py-3 rounded-xl font-bold text-sm transition-all bg-indigo-950 text-white shadow";
-                btnSci.className = "flex-1 py-3 rounded-xl font-bold text-sm transition-all text-slate-600 hover:text-slate-900";
-                secLit.classList.remove('hidden');
-                secSci.classList.add('hidden');
-            }
-        }
-
-        function loadSubject(subjectKey, subjectName) {
-            document.getElementById('section-sci').classList.add('hidden');
-            document.getElementById('section-lit').classList.add('hidden');
-            document.querySelector('.bg-gradient-to-l').classList.add('hidden');
-            document.querySelector('.bg-white.p-1\\.5').classList.add('hidden');
-            
-            document.getElementById('quiz-section').classList.remove('hidden');
-            document.getElementById('quiz-subject-title').innerText = "بنك الوزارة: " + subjectName;
-
-            if (questionBanks[subjectKey]) {
-                currentQuestions = questionBanks[subjectKey].questions;
-                currentIndex = 0;
-                showQuestion();
-            } else {
-                document.getElementById('question-box').innerText = "عذراً، هذه المادة قيد التحديث.";
-            }
-        }
-
-        function showQuestion() {
-            if (!isVip && currentIndex >= 10) {
-                document.getElementById('quiz-section').innerHTML = `
-                    <div class="text-center py-8">
-                        <span class="text-4xl block mb-3">🔒</span>
-                        <h3 class="text-base font-bold text-amber-600 mb-1">وصلت للحد المجاني (10 أسئلة)</h3>
-                        <p class="text-xs text-slate-500 mb-5">لفتح كافة الأسئلة والحلول الوزارية، فعّل حسابك بـ 10 شيكل فقط!</p>
-                        <button onclick="openVipModal()" class="bg-amber-500 text-slate-950 font-bold px-5 py-2.5 rounded-xl text-xs shadow">أدخل كود التفعيل</button>
-                        <br><br>
-                        <button onclick="backToSubjects()" class="text-slate-400 text-xs underline">العودة للمواد</button>
-                    </div>
-                `;
-                return;
-            }
-
-            if (currentIndex >= currentQuestions.length) {
-                document.getElementById('quiz-section').innerHTML = `
-                    <div class="text-center py-8">
-                        <span class="text-4xl block mb-3">🎉</span>
-                        <h3 class="text-base font-bold text-indigo-950 mb-1">أحسنت! أنهيت الأسئلة المتوفرة</h3>
-                        <p class="text-xs text-slate-500 mb-5">أنت جاهز للامتحان الوزاري بامتياز.</p>
-                        <button onclick="backToSubjects()" class="bg-indigo-950 text-white font-bold px-5 py-2.5 rounded-xl text-xs shadow">اختر مادة أخرى</button>
-                    </div>
-                `;
-                return;
-            }
-
-            let qData = currentQuestions[currentIndex];
-            document.getElementById('question-counter').innerText = `السؤال ${currentIndex + 1} من أصل ${currentQuestions.length}`;
-            document.getElementById('question-box').innerText = qData.q;
-            
-            let optionsHTML = "";
-            qData.options.forEach((opt, idx) => {
-                optionsHTML += `<button onclick="checkAnswer(${idx}, ${qData.correct})" class="option-btn w-full text-right bg-slate-50 hover:bg-slate-100 border border-slate-200 p-3.5 rounded-2xl transition text-slate-800 text-sm font-bold shadow-sm">${opt}</button>`;
-            });
-            document.getElementById('options-box').innerHTML = optionsHTML;
-            document.getElementById('explanation-box').classList.add('hidden');
-            document.getElementById('next-btn').classList.add('hidden');
-        }
-
-        function checkAnswer(selected, correct) {
-            let buttons = document.querySelectorAll('.option-btn');
-            buttons.forEach((btn, idx) => {
-                btn.disabled = true;
-                if (idx === correct) {
-                    btn.classList.remove('bg-slate-50', 'border-slate-200');
-                    btn.classList.add('bg-emerald-600', 'border-emerald-500', 'text-white');
-                } else if (idx === selected) {
-                    btn.classList.remove('bg-slate-50', 'border-slate-200');
-                    btn.classList.add('bg-rose-600', 'border-rose-500', 'text-white');
-                }
-            });
-
-            let qData = currentQuestions[currentIndex];
-            if (qData.exp) {
-                document.getElementById('explanation-text').innerText = qData.exp;
-                document.getElementById('explanation-box').classList.remove('hidden');
-            }
-
-            document.getElementById('next-btn').classList.remove('hidden');
-        }
-
-        function nextQuestion() {
-            currentIndex++;
-            showQuestion();
-        }
-
-        function backToSubjects() {
-            location.reload();
-        }
-
-        function openVipModal() { document.getElementById('vip-modal').classList.remove('hidden'); }
-        function closeVipModal() { document.getElementById('vip-modal').classList.add('hidden'); }
-
-        function activateVip() {
-            let code = document.getElementById('vip-code-input').value.trim();
-            if (code === "GAZA10" || code.startsWith("GZ-")) {
-                localStorage.setItem('tawjihi_vip', 'true');
-                isVip = true;
-                alert("مبروك! تم تفعيل الباقة الكاملة بنجاح 🎉");
-                closeVipModal();
-                location.reload();
-            } else {
-                alert("الكود غير صحيح، تأكد من الكود المدخل.");
-            }
-        }
-
-        function toggleDarkMode() {
-            alert("الوضع الليلي يعمل تلقائياً حسب تفضيلات متصفحك أو قريباً بالكامل!");
-        }
-    </script>
-</body>
-</html>
+                    <span class="absolute top-4 left-4 bg-amber-50 text
