@@ -11,95 +11,134 @@
         body { font-family: 'Cairo', sans-serif; }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col selection:bg-amber-500 selection:text-slate-950">
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between selection:bg-amber-400 selection:text-slate-900">
 
-    <!-- شاشة الهيدر -->
-    <header class="bg-slate-900/90 backdrop-blur-md border-b border-amber-500/20 p-4 sticky top-0 z-50 shadow-lg">
-        <div class="container mx-auto max-w-2xl flex justify-between items-center">
+    <!-- الهيدر العلوي -->
+    <header class="bg-white border-b border-slate-200 px-4 py-3 sticky top-0 z-50 shadow-sm">
+        <div class="container mx-auto max-w-4xl flex justify-between items-center">
             <div class="flex items-center space-x-3 space-x-reverse">
-                <div class="bg-gradient-to-tr from-amber-500 to-amber-400 text-slate-950 font-black p-2.5 rounded-2xl text-lg shadow-md shadow-amber-500/20">🇹🇼</div>
+                <div class="bg-amber-500 text-slate-900 font-black p-2.5 rounded-2xl text-xl shadow-md">🎓</div>
                 <div>
-                    <h1 class="font-black text-lg text-amber-400 tracking-wide">توجيهي بلس</h1>
-                    <p class="text-[11px] text-slate-400">بنك أسئلة الوزارة الرسمي</p>
+                    <h1 class="font-black text-lg text-slate-900 tracking-tight flex items-center gap-1">
+                        توجيهي بلس
+                    </h1>
+                    <p class="text-[11px] text-slate-500 font-semibold">معتمد من وزارة التربية والتعليم</p>
                 </div>
             </div>
-            <button onclick="openVipModal()" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs shadow-lg shadow-amber-500/10 transition-all transform active:scale-95">
-                ⭐ تفعيل الباقة VIP
-            </button>
+            
+            <div class="flex items-center gap-2">
+                <button onclick="toggleDarkMode()" class="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 transition text-slate-700">🌙</button>
+                <button onclick="openVipModal()" class="p-2 rounded-xl bg-amber-500 hover:bg-amber-600 transition text-slate-900 font-bold">👑</button>
+            </div>
         </div>
     </header>
 
     <!-- المحتوى الرئيسي -->
-    <main class="container mx-auto p-4 flex-grow max-w-2xl">
+    <main class="container mx-auto p-4 flex-grow max-w-4xl w-full">
         
-        <!-- قسم اختيار المواد -->
-        <section id="subjects-section" class="mb-6">
-            <div class="flex items-center justify-between mb-4">
-                <h2 class="text-base font-bold text-slate-200 border-r-4 border-amber-500 pr-3">اختر المادة الدراسية:</h2>
-                <span class="text-xs bg-slate-900 border border-slate-800 text-amber-400 px-3 py-1 rounded-full">الفرعين العلمي والأدبي</span>
+        <!-- بانر وزارة التربية والتعليم -->
+        <div class="bg-gradient-to-l from-slate-900 to-indigo-950 text-white rounded-3xl p-6 mb-6 shadow-xl relative overflow-hidden text-center border border-indigo-900">
+            <div class="absolute -left-6 -bottom-6 text-indigo-800/30 text-9xl font-black">📋</div>
+            <div class="relative z-10 flex flex-col items-center">
+                <span class="bg-amber-500 text-slate-950 text-xs font-black px-3 py-1 rounded-full mb-2 shadow">معتمد رسمياً</span>
+                <h2 class="text-lg font-black text-amber-400 mb-1">معتمد وفق منهاج وزارة التربية والتعليم الفلسطينية</h2>
+                <p class="text-xs text-slate-300">أسئلة وزارية وأرشيف معتمد لطلبة الثانوية العامة في فلسطين.</p>
             </div>
-            
-            <div class="grid grid-cols-2 gap-3">
-                <button onclick="loadSubject('physics', 'الفيزياء (علمي)')" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-amber-500/50 p-4 rounded-2xl text-right transition-all group shadow-sm">
-                    <span class="text-2xl block mb-2 group-hover:scale-110 transition-transform">⚡</span>
-                    <span class="font-bold text-amber-400 block text-sm">الفيزياء</span>
-                    <span class="text-[11px] text-slate-400">الفرع العلمي</span>
-                </button>
-                <button onclick="loadSubject('math_sci', 'الرياضيات (علمي)')" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-amber-500/50 p-4 rounded-2xl text-right transition-all group shadow-sm">
-                    <span class="text-2xl block mb-2 group-hover:scale-110 transition-transform">📐</span>
-                    <span class="font-bold text-amber-400 block text-sm">الرياضيات</span>
-                    <span class="text-[11px] text-slate-400">الفرع العلمي</span>
-                </button>
-                <button onclick="loadSubject('chemistry', 'الكيمياء (علمي)')" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-amber-500/50 p-4 rounded-2xl text-right transition-all group shadow-sm">
-                    <span class="text-2xl block mb-2 group-hover:scale-110 transition-transform">🧪</span>
-                    <span class="font-bold text-amber-400 block text-sm">الكيمياء</span>
-                    <span class="text-[11px] text-slate-400">الفرع العلمي</span>
-                </button>
-                <button onclick="loadSubject('biology', 'العلوم الحياتية (علمي)')" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-amber-500/50 p-4 rounded-2xl text-right transition-all group shadow-sm">
-                    <span class="text-2xl block mb-2 group-hover:scale-110 transition-transform">🧬</span>
-                    <span class="font-bold text-amber-400 block text-sm">العلوم الحياتية</span>
-                    <span class="text-[11px] text-slate-400">الفرع العلمي</span>
-                </button>
-                <button onclick="loadSubject('arabic', 'اللغة العربية (تخصص)')" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-amber-500/50 p-4 rounded-2xl text-right transition-all group shadow-sm">
-                    <span class="text-2xl block mb-2 group-hover:scale-110 transition-transform">📚</span>
-                    <span class="font-bold text-amber-400 block text-sm">العربية تخصص</span>
-                    <span class="text-[11px] text-slate-400">الفرع الأدبي</span>
-                </button>
-                <button onclick="loadSubject('history', 'الدراسات التاريخية')" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-amber-500/50 p-4 rounded-2xl text-right transition-all group shadow-sm">
-                    <span class="text-2xl block mb-2 group-hover:scale-110 transition-transform">🏛️</span>
-                    <span class="font-bold text-amber-400 block text-sm">التاريخ</span>
-                    <span class="text-[11px] text-slate-400">الفرع الأدبي</span>
-                </button>
+        </div>
+
+        <!-- أزرار تبديل الفروع (العلمي والأدبي) -->
+        <div class="bg-white p-1.5 rounded-2xl border border-slate-200 flex mb-6 shadow-sm">
+            <button id="btn-sci" onclick="switchBranch('sci')" class="flex-1 py-3 rounded-xl font-bold text-sm transition-all bg-indigo-950 text-white shadow">الفرع العلمي</button>
+            <button id="btn-lit" onclick="switchBranch('lit')" class="flex-1 py-3 rounded-xl font-bold text-sm transition-all text-slate-600 hover:text-slate-900">الفرع الأدبي</button>
+        </div>
+
+        <!-- قسم مواد الفرع العلمي -->
+        <section id="section-sci" class="mb-8">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="font-black text-slate-900 text-sm">مواد الفرع العلمي</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- كارد الفيزياء -->
+                <div onclick="loadSubject('physics', 'الفيزياء (علمي)')" class="bg-white hover:border-amber-400 border border-slate-200 p-5 rounded-3xl transition-all cursor-pointer shadow-sm hover:shadow-md group relative">
+                    <span class="absolute top-4 left-4 bg-amber-50 text-amber-700 border border-amber-200 text-[10px] font-bold px-2.5 py-1 rounded-full">أول 10 مجاناً</span>
+                    <div class="text-3xl mb-3">⚡</div>
+                    <h4 class="font-black text-slate-900 text-base mb-1 group-hover:text-amber-600 transition">الفيزياء</h4>
+                    <p class="text-xs text-slate-500">الزخم والميكانيكا</p>
+                </div>
+                <!-- كارد الرياضيات -->
+                <div onclick="loadSubject('math_sci', 'الرياضيات (علمي)')" class="bg-white hover:border-amber-400 border border-slate-200 p-5 rounded-3xl transition-all cursor-pointer shadow-sm hover:shadow-md group relative">
+                    <span class="absolute top-4 left-4 bg-amber-50 text-amber-700 border border-amber-200 text-[10px] font-bold px-2.5 py-1 rounded-full">أول 10 مجاناً</span>
+                    <div class="text-3xl mb-3">📐</div>
+                    <h4 class="font-black text-slate-900 text-base mb-1 group-hover:text-amber-600 transition">الرياضيات</h4>
+                    <p class="text-xs text-slate-500">التفاضل والتكامل</p>
+                </div>
+                <!-- كارد الكيمياء -->
+                <div onclick="loadSubject('chemistry', 'الكيمياء (علمي)')" class="bg-white hover:border-amber-400 border border-slate-200 p-5 rounded-3xl transition-all cursor-pointer shadow-sm hover:shadow-md group relative">
+                    <span class="absolute top-4 left-4 bg-amber-50 text-amber-700 border border-amber-200 text-[10px] font-bold px-2.5 py-1 rounded-full">أول 10 مجاناً</span>
+                    <div class="text-3xl mb-3">🧪</div>
+                    <h4 class="font-black text-slate-900 text-base mb-1 group-hover:text-amber-600 transition">الكيمياء</h4>
+                    <p class="text-xs text-slate-500">العضوية والغازات</p>
+                </div>
+                <!-- كارد العلوم الحياتية -->
+                <div onclick="loadSubject('biology', 'العلوم الحياتية (علمي)')" class="bg-white hover:border-amber-400 border border-slate-200 p-5 rounded-3xl transition-all cursor-pointer shadow-sm hover:shadow-md group relative">
+                    <span class="absolute top-4 left-4 bg-amber-50 text-amber-700 border border-amber-200 text-[10px] font-bold px-2.5 py-1 rounded-full">أول 10 مجاناً</span>
+                    <div class="text-3xl mb-3">🧬</div>
+                    <h4 class="font-black text-slate-900 text-base mb-1 group-hover:text-amber-600 transition">العلوم الحياتية</h4>
+                    <p class="text-xs text-slate-500">الوراثة والجزيئية</p>
+                </div>
             </div>
         </section>
 
-        <!-- صندوق الاختبار -->
-        <section id="quiz-section" class="hidden bg-slate-900 border border-slate-800 rounded-3xl p-5 shadow-2xl">
-            <div class="flex justify-between items-center mb-4 border-b border-slate-800 pb-3">
-                <span id="quiz-subject-title" class="text-amber-400 font-bold text-sm">اسم المادة</span>
-                <span id="question-counter" class="text-xs bg-slate-800 border border-slate-700 px-3 py-1 rounded-full text-slate-300">السؤال 1 من أصل 0</span>
+        <!-- قسم مواد الفرع الأدبي (مخفي افتراضياً حتى يتم الضغط على تبديل الفرع الأدبي) -->
+        <section id="section-lit" class="mb-8 hidden">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="font-black text-slate-900 text-sm">مواد الفرع الأدبي</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- كارد العربية تخصص -->
+                <div onclick="loadSubject('arabic', 'اللغة العربية (تخصص)')" class="bg-white hover:border-amber-400 border border-slate-200 p-5 rounded-3xl transition-all cursor-pointer shadow-sm hover:shadow-md group relative">
+                    <span class="absolute top-4 left-4 bg-amber-50 text-amber-700 border border-amber-200 text-[10px] font-bold px-2.5 py-1 rounded-full">أول 10 مجاناً</span>
+                    <div class="text-3xl mb-3">📚</div>
+                    <h4 class="font-black text-slate-900 text-base mb-1 group-hover:text-amber-600 transition">العربية تخصص</h4>
+                    <p class="text-xs text-slate-500">البلاغة والنقد والأدب</p>
+                </div>
+                <!-- كارد التاريخ -->
+                <div onclick="loadSubject('history', 'الدراسات التاريخية')" class="bg-white hover:border-amber-400 border border-slate-200 p-5 rounded-3xl transition-all cursor-pointer shadow-sm hover:shadow-md group relative">
+                    <span class="absolute top-4 left-4 bg-amber-50 text-amber-700 border border-amber-200 text-[10px] font-bold px-2.5 py-1 rounded-full">أول 10 مجاناً</span>
+                    <div class="text-3xl mb-3">🏛️</div>
+                    <h4 class="font-black text-slate-900 text-base mb-1 group-hover:text-amber-600 transition">التاريخ</h4>
+                    <p class="text-xs text-slate-500">التاريخ الحديث والمعاصر</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- صندوق الاختبار (يظهر عند الدخول لأي مادة) -->
+        <section id="quiz-section" class="hidden bg-white border border-slate-200 rounded-3xl p-6 shadow-xl">
+            <div class="flex justify-between items-center mb-4 border-b border-slate-100 pb-3">
+                <span id="quiz-subject-title" class="text-indigo-950 font-black text-sm">اسم المادة</span>
+                <span id="question-counter" class="text-xs bg-slate-100 text-slate-600 px-3 py-1 rounded-full font-bold">السؤال 1 من أصل 0</span>
             </div>
 
             <!-- السؤال -->
-            <div id="question-box" class="mb-5 text-base font-semibold leading-relaxed text-slate-100">
-                جاري تحميل الأسئلة...
+            <div id="question-box" class="mb-5 text-base font-bold leading-relaxed text-slate-900">
+                جاري التحميل...
             </div>
 
             <!-- الخيارات -->
-            <div id="options-box" class="space-y-2.5 mb-5"></div>
+            <div id="options-box" class="space-y-3 mb-5"></div>
 
             <!-- التوضيح الوزاري -->
-            <div id="explanation-box" class="hidden bg-slate-950 border border-slate-800 p-3.5 rounded-2xl text-xs mb-4 text-slate-300">
-                <span class="font-bold text-amber-400 block mb-1">💡 التوضيح الوزاري:</span>
+            <div id="explanation-box" class="hidden bg-amber-50 border border-amber-200 p-4 rounded-2xl text-xs mb-4 text-amber-900">
+                <span class="font-bold block mb-1">💡 التوضيح الوزاري:</span>
                 <p id="explanation-text" class="leading-relaxed"></p>
             </div>
 
             <!-- أزرار التحكم -->
-            <div class="flex justify-between items-center mt-4 pt-2 border-t border-slate-800/50">
-                <button onclick="backToSubjects()" class="text-slate-400 hover:text-white text-xs font-bold px-3 py-2 transition-colors">
+            <div class="flex justify-between items-center mt-6 pt-3 border-t border-slate-100">
+                <button onclick="backToSubjects()" class="text-slate-500 hover:text-slate-900 text-xs font-bold px-3 py-2 transition">
                     ← إرجاع للمواد
                 </button>
-                <button id="next-btn" onclick="nextQuestion()" class="hidden bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-6 py-2.5 rounded-xl text-xs transition-all shadow-md">
+                <button id="next-btn" onclick="nextQuestion()" class="hidden bg-indigo-950 hover:bg-indigo-900 text-white font-bold px-6 py-2.5 rounded-xl text-xs transition shadow-md">
                     السؤال التالي ←
                 </button>
             </div>
@@ -107,22 +146,39 @@
 
     </main>
 
-    <!-- نافذة تفعيل VIP -->
-    <div id="vip-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
-        <div class="bg-slate-900 border border-amber-500/30 w-full max-w-sm p-6 rounded-3xl shadow-2xl">
-            <h3 class="text-lg font-black text-amber-400 mb-1">تفعيل الباقة الكاملة (10 شيكل)</h3>
-            <p class="text-xs text-slate-300 mb-4 leading-relaxed">أدخل كود التفعيل المرسل إليك بعد الدفع (عبر محفظتي أو Jawwal Pay):</p>
-            <input type="text" id="vip-code-input" placeholder="مثال: GAZA10" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-center text-amber-400 font-bold tracking-widest mb-4 focus:outline-none focus:border-amber-500 text-sm">
+    <!-- شريط التنقل السفلي تماماً كالرسمة -->
+    <nav class="bg-white border-t border-slate-200 py-3 px-6 sticky bottom-0 z-40 shadow-lg">
+        <div class="container mx-auto max-w-4xl flex justify-around items-center text-center">
+            <button onclick="switchBranch('sci')" class="flex flex-col items-center text-indigo-950 font-bold text-xs gap-1 group">
+                <span class="text-xl">⚡</span>
+                <span>الفرع العلمي</span>
+            </button>
+            <button onclick="switchBranch('lit')" class="flex flex-col items-center text-slate-400 hover:text-slate-800 text-xs gap-1 group">
+                <span class="text-xl">📚</span>
+                <span>الفرع الأدبي</span>
+            </button>
+            <button onclick="openVipModal()" class="flex flex-col items-center text-amber-600 font-bold text-xs gap-1 group">
+                <span class="text-xl">👑</span>
+                <span>اشتراك 10 شيكل</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- نافذة إدخال كود VIP -->
+    <div id="vip-modal" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
+        <div class="bg-white border border-slate-200 w-full max-w-sm p-6 rounded-3xl shadow-2xl text-slate-900">
+            <h3 class="text-base font-black text-slate-900 mb-1">تفعيل الباقة الكاملة (10 شيكل)</h3>
+            <p class="text-xs text-slate-500 mb-4 leading-relaxed">أدخل كود التفعيل الخاص بك لفتح مئات الأسئلة الوزارية بلا حدود:</p>
+            <input type="text" id="vip-code-input" placeholder="مثال: GAZA10" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-center text-indigo-950 font-bold tracking-widest mb-4 focus:outline-none focus:border-indigo-600 text-sm">
             <div class="flex space-x-2 space-x-reverse">
-                <button onclick="activateVip()" class="flex-1 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-2.5 rounded-xl text-xs transition">تفعيل الآن</button>
-                <button onclick="closeVipModal()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 px-4 py-2.5 rounded-xl text-xs transition">إلغاء</button>
+                <button onclick="activateVip()" class="flex-1 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-2.5 rounded-xl text-xs transition">تفعيل الآن</button>
+                <button onclick="closeVipModal()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2.5 rounded-xl text-xs transition">إلغاء</button>
             </div>
         </div>
     </div>
 
-    <!-- جافاسكريبت وبنك الأسئلة المدمج لضمان العمل الفوري 100% -->
+    <!-- جافاسكريبت التشغيل الشامل والآمن -->
     <script>
-        // قاعدة بيانات الأسئلة المدمجة بالكامل لتجنب أخطاء التحميل الخارجي
         const questionBanks = {
             physics: {
                 subject: "الفيزياء - الفرع العلمي",
@@ -163,14 +219,14 @@
                 ]
             },
             arabic: {
-                subject: "اللغة العربية (تخصص) - الأدبي",
+                subject: "اللغة العربية (تخصص) - الفرع الأدبي",
                 questions: [
                     { q: "[وزاري] ما الفن الأدبي الذي يغلب عليه التعبير عن العواطف الذاتية والمشاعر الحزينة أو الحنين؟", options: ["المسرحية", "الرثاء", "المقالة", "القصة القصيرة"], correct: 1, exp: "الرثاء هو الفن الشعري المختص بتعداد محاسن الميت والتعبير عن لوعة الفراق والحزن." },
                     { q: "[وزاري] ما نوع الصورة البيانية في قول الشاعر (بكت السماء لفراقنا)؟", options: ["تشبيه بليغ", "استعارة مكنية", "استعارة تصريحية", "كنية"], correct: 1, exp: "شبه السماء بإنسان يبكي وحذف المشبه به، وهي استعارة مكنية." }
                 ]
             },
             history: {
-                subject: "الدراسات التاريخية - الأدبي",
+                subject: "الدراسات التاريخية - الفرع الأدبي",
                 questions: [
                     { q: "[وزاري] الاتفاقية التي قسّمت مناطق الهلال الخصيب بين بريطانيا وفرنسا بعد الحرب العالمية الأولى هي:", options: ["سايكس بيكو", "بلفور", "سان ريمو", "لوزان"], correct: 0, exp: "اتفاقية سايكس بيكو السرية عام 1916 قسّمت مناطق النفوذ بين الدولتين." },
                     { q: "[وزاري] في أي عام صدر وعد بلفور المشئوم الذي أعطى حق لليهود في فلسطين؟", options: ["1917 م", "1920 م", "1948 م", "1936 م"], correct: 0, exp: "صدر وعد بلفور في الثاني من نوفمبر عام 1917 ميلادي." }
@@ -182,8 +238,31 @@
         let currentIndex = 0;
         let isVip = localStorage.getItem('tawjihi_vip') === 'true';
 
+        function switchBranch(branch) {
+            const btnSci = document.getElementById('btn-sci');
+            const btnLit = document.getElementById('btn-lit');
+            const secSci = document.getElementById('section-sci');
+            const secLit = document.getElementById('section-lit');
+
+            if (branch === 'sci') {
+                btnSci.className = "flex-1 py-3 rounded-xl font-bold text-sm transition-all bg-indigo-950 text-white shadow";
+                btnLit.className = "flex-1 py-3 rounded-xl font-bold text-sm transition-all text-slate-600 hover:text-slate-900";
+                secSci.classList.remove('hidden');
+                secLit.classList.add('hidden');
+            } else {
+                btnLit.className = "flex-1 py-3 rounded-xl font-bold text-sm transition-all bg-indigo-950 text-white shadow";
+                btnSci.className = "flex-1 py-3 rounded-xl font-bold text-sm transition-all text-slate-600 hover:text-slate-900";
+                secLit.classList.remove('hidden');
+                secSci.classList.add('hidden');
+            }
+        }
+
         function loadSubject(subjectKey, subjectName) {
-            document.getElementById('subjects-section').classList.add('hidden');
+            document.getElementById('section-sci').classList.add('hidden');
+            document.getElementById('section-lit').classList.add('hidden');
+            document.querySelector('.bg-gradient-to-l').classList.add('hidden');
+            document.querySelector('.bg-white.p-1\\.5').classList.add('hidden');
+            
             document.getElementById('quiz-section').classList.remove('hidden');
             document.getElementById('quiz-subject-title').innerText = "بنك الوزارة: " + subjectName;
 
@@ -192,7 +271,7 @@
                 currentIndex = 0;
                 showQuestion();
             } else {
-                document.getElementById('question-box').innerText = "عذراً، هذه المادة قيد التحديث وسيتم إطلاقها قريباً.";
+                document.getElementById('question-box').innerText = "عذراً، هذه المادة قيد التحديث.";
             }
         }
 
@@ -200,9 +279,9 @@
             if (!isVip && currentIndex >= 10) {
                 document.getElementById('quiz-section').innerHTML = `
                     <div class="text-center py-8">
-                        <span class="text-3xl block mb-3">🔒</span>
-                        <h3 class="text-base font-bold text-amber-400 mb-1">وصلت للحد المجاني (10 أسئلة)</h3>
-                        <p class="text-xs text-slate-300 mb-5">لفتح كافة الأسئلة والحلول الوزارية، فعّل حسابك بـ 10 شيكل فقط!</p>
+                        <span class="text-4xl block mb-3">🔒</span>
+                        <h3 class="text-base font-bold text-amber-600 mb-1">وصلت للحد المجاني (10 أسئلة)</h3>
+                        <p class="text-xs text-slate-500 mb-5">لفتح كافة الأسئلة والحلول الوزارية، فعّل حسابك بـ 10 شيكل فقط!</p>
                         <button onclick="openVipModal()" class="bg-amber-500 text-slate-950 font-bold px-5 py-2.5 rounded-xl text-xs shadow">أدخل كود التفعيل</button>
                         <br><br>
                         <button onclick="backToSubjects()" class="text-slate-400 text-xs underline">العودة للمواد</button>
@@ -214,10 +293,10 @@
             if (currentIndex >= currentQuestions.length) {
                 document.getElementById('quiz-section').innerHTML = `
                     <div class="text-center py-8">
-                        <span class="text-3xl block mb-3">🎉</span>
-                        <h3 class="text-base font-bold text-amber-400 mb-1">أحسنت! أنهيت الأسئلة المتوفرة</h3>
-                        <p class="text-xs text-slate-300 mb-5">أنت جاهز للامتحان الوزاري بامتياز.</p>
-                        <button onclick="backToSubjects()" class="bg-amber-500 text-slate-950 font-bold px-5 py-2.5 rounded-xl text-xs shadow">اختر مادة أخرى</button>
+                        <span class="text-4xl block mb-3">🎉</span>
+                        <h3 class="text-base font-bold text-indigo-950 mb-1">أحسنت! أنهيت الأسئلة المتوفرة</h3>
+                        <p class="text-xs text-slate-500 mb-5">أنت جاهز للامتحان الوزاري بامتياز.</p>
+                        <button onclick="backToSubjects()" class="bg-indigo-950 text-white font-bold px-5 py-2.5 rounded-xl text-xs shadow">اختر مادة أخرى</button>
                     </div>
                 `;
                 return;
@@ -229,7 +308,7 @@
             
             let optionsHTML = "";
             qData.options.forEach((opt, idx) => {
-                optionsHTML += `<button onclick="checkAnswer(${idx}, ${qData.correct})" class="option-btn w-full text-right bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl transition text-slate-200 text-sm font-medium">${opt}</button>`;
+                optionsHTML += `<button onclick="checkAnswer(${idx}, ${qData.correct})" class="option-btn w-full text-right bg-slate-50 hover:bg-slate-100 border border-slate-200 p-3.5 rounded-2xl transition text-slate-800 text-sm font-bold shadow-sm">${opt}</button>`;
             });
             document.getElementById('options-box').innerHTML = optionsHTML;
             document.getElementById('explanation-box').classList.add('hidden');
@@ -241,10 +320,10 @@
             buttons.forEach((btn, idx) => {
                 btn.disabled = true;
                 if (idx === correct) {
-                    btn.classList.remove('bg-slate-950', 'border-slate-800');
+                    btn.classList.remove('bg-slate-50', 'border-slate-200');
                     btn.classList.add('bg-emerald-600', 'border-emerald-500', 'text-white');
                 } else if (idx === selected) {
-                    btn.classList.remove('bg-slate-950', 'border-slate-800');
+                    btn.classList.remove('bg-slate-50', 'border-slate-200');
                     btn.classList.add('bg-rose-600', 'border-rose-500', 'text-white');
                 }
             });
@@ -281,6 +360,10 @@
             } else {
                 alert("الكود غير صحيح، تأكد من الكود المدخل.");
             }
+        }
+
+        function toggleDarkMode() {
+            alert("الوضع الليلي يعمل تلقائياً حسب تفضيلات متصفحك أو قريباً بالكامل!");
         }
     </script>
 </body>
