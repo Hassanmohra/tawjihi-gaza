@@ -3,26 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>توجيهي بلس - فلسطين</title>
+  <title>توجيهي بلس - فلسطين | الأرشيف الشامل</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="manifest" href="manifest.json">
   <style>
     :root {
       --primary: #1e3a8a;
-      --primary-light: #3b82f6;
       --gold: #d97706;
-      --gold-light: #f59e0b;
       --bg: #f8fafc;
       --card-bg: #ffffff;
       --text: #0f172a;
       --text-muted: #64748b;
       --border: #e2e8f0;
-      --success: #059669;
-      --error: #dc2626;
       --radius: 18px;
     }
-
     .dark-mode {
       --bg: #090d16;
       --card-bg: #131c2e;
@@ -30,116 +25,46 @@
       --text-muted: #94a3b8;
       --border: #1e293b;
     }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; transition: background 0.3s, color 0.3s, border 0.3s; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; transition: background 0.3s, color 0.3s; }
     body { background-color: var(--bg); color: var(--text); padding-bottom: 95px; min-height: 100vh; }
-
-    header {
-      background: var(--card-bg);
-      padding: 14px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 2px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-    }
+    header { background: var(--card-bg); padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--border); position: sticky; top: 0; z-index: 100; }
     .logo-area { display: flex; align-items: center; gap: 10px; }
     .logo-icon { width: 38px; height: 38px; background: linear-gradient(135deg, var(--primary), var(--gold)); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; }
     .logo-text h1 { font-size: 17px; font-weight: 800; color: var(--primary); line-height: 1.2; }
     .dark-mode .logo-text h1 { color: #60a5fa; }
     .logo-text span { font-size: 10px; color: var(--gold); font-weight: 700; display: block; }
-
     .header-actions { display: flex; gap: 8px; align-items: center; }
     .icon-btn { background: var(--bg); border: 1px solid var(--border); width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text); font-size: 15px; }
-
     .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-
-    .moe-banner {
-      background: linear-gradient(135deg, #0f172a, #1e3a8a);
-      color: white;
-      padding: 16px 20px;
-      border-radius: var(--radius);
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      border-right: 5px solid var(--gold);
-      box-shadow: 0 10px 25px -5px rgba(30, 58, 138, 0.25);
-    }
+    .moe-banner { background: linear-gradient(135deg, #0f172a, #1e3a8a); color: white; padding: 16px 20px; border-radius: var(--radius); margin-bottom: 20px; display: flex; align-items: center; gap: 14px; border-right: 5px solid var(--gold); }
     .moe-banner i { font-size: 28px; color: var(--gold); }
     .moe-banner h3 { font-size: 14px; font-weight: 800; margin-bottom: 2px; }
     .moe-banner p { font-size: 11px; opacity: 0.85; }
-
-    .promo-card {
-      background: linear-gradient(135deg, #1e3a8a, #312e81);
-      color: white;
-      padding: 20px;
-      border-radius: var(--radius);
-      margin-bottom: 20px;
-      position: relative;
-      overflow: hidden;
-    }
-    .promo-card::after { content: '🎓'; position: absolute; left: -10px; bottom: -20px; font-size: 90px; opacity: 0.1; }
-    .promo-card h2 { font-size: 17px; margin-bottom: 6px; font-weight: 800; }
-    .promo-card p { font-size: 12px; opacity: 0.9; margin-bottom: 12px; line-height: 1.5; }
-    .promo-btn { background: var(--gold); color: #fff; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 800; cursor: pointer; font-size: 13px; box-shadow: 0 4px 10px rgba(217, 119, 6, 0.3); }
-
-    .tabs { display: flex; gap: 8px; margin-bottom: 20px; background: var(--card-bg); padding: 6px; border: 1px solid var(--border); border-radius: 14px; box-shadow: 0 2px 6px rgba(0,0,0,0.02); }
-    .tab { flex: 1; padding: 10px; text-align: center; border-radius: 10px; cursor: pointer; font-weight: 700; font-size: 13px; color: var(--text-muted); border: none; background: transparent; }
-    .tab.active { background: var(--primary); color: white; box-shadow: 0 4px 12px rgba(30, 58, 138, 0.2); }
-
-    .section-title { font-size: 15px; font-weight: 800; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; color: var(--text); }
+    .section-title { font-size: 15px; font-weight: 800; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
     .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 24px; }
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 16px;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
-    }
-    .card:hover { border-color: var(--primary); transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0,0,0,0.05); }
+    .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; cursor: pointer; position: relative; }
+    .card:hover { border-color: var(--primary); transform: translateY(-2px); }
     .card i { font-size: 24px; color: var(--gold); margin-bottom: 10px; }
     .card h3 { font-size: 15px; font-weight: 800; margin-bottom: 4px; }
     .card p { font-size: 11px; color: var(--text-muted); }
     .free-badge { position: absolute; top: 12px; left: 12px; background: #e0f2fe; color: #0284c7; font-size: 10px; padding: 2px 8px; border-radius: 20px; font-weight: 800; }
-
     .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); z-index: 1000; align-items: center; justify-content: center; padding: 16px; }
-    .modal-content { background: var(--card-bg); width: 100%; max-width: 500px; border-radius: var(--radius); padding: 24px; max-height: 90vh; overflow-y: auto; position: relative; border: 1px solid var(--border); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2); }
+    .modal-content { background: var(--card-bg); width: 100%; max-width: 500px; border-radius: var(--radius); padding: 24px; max-height: 90vh; overflow-y: auto; position: relative; border: 1px solid var(--border); }
     .close-modal { position: absolute; top: 16px; left: 16px; font-size: 20px; cursor: pointer; color: var(--text-muted); }
-
     .question-counter { font-size: 11px; color: var(--gold); font-weight: 800; margin-bottom: 6px; text-transform: uppercase; }
     .question-box { margin-bottom: 16px; }
     .question-title { font-size: 15px; font-weight: 800; margin-bottom: 14px; line-height: 1.6; }
     .options { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
     .option { background: var(--bg); border: 1px solid var(--border); padding: 12px 16px; border-radius: 12px; cursor: pointer; font-size: 13px; font-weight: 600; }
-    .option:hover { border-color: var(--primary); background: rgba(59, 130, 246, 0.03); }
     .option.correct { background: #d1fae5; border-color: #059669; color: #065f46; font-weight: 800; }
     .option.wrong { background: #fee2e2; border-color: #dc2626; color: #991b1b; }
     .explanation { background: var(--bg); border-right: 4px solid var(--gold); padding: 12px; border-radius: 8px; font-size: 12px; margin-bottom: 16px; display: none; line-height: 1.6; }
-
-    .flashcard { background: var(--bg); border: 1px solid var(--border); border-radius: 14px; padding: 24px; text-align: center; min-height: 180px; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; margin-bottom: 16px; }
-    .flashcard h4 { font-size: 16px; color: var(--primary); margin-bottom: 8px; font-weight: 800; }
-    .flashcard p { font-size: 13px; color: var(--text-muted); }
-
     .sub-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75); backdrop-filter: blur(5px); z-index: 2000; align-items: center; justify-content: center; padding: 20px; }
     .sub-card { background: var(--card-bg); width: 100%; max-width: 400px; padding: 24px; border-radius: var(--radius); text-align: center; border: 1px solid var(--border); }
     .sub-card h3 { margin-bottom: 8px; font-size: 18px; color: var(--primary); font-weight: 800; }
     .sub-card p { font-size: 12px; color: var(--text-muted); margin-bottom: 16px; line-height: 1.6; }
-    .sub-card input { width: 100%; padding: 12px; border: 1px solid var(--border); background: var(--bg); color: var(--text); border-radius: 10px; font-size: 16px; text-align: center; margin-bottom: 12px; text-transform: uppercase; font-weight: 700; letter-spacing: 2px; }
+    .sub-card input { width: 100%; padding: 12px; border: 1px solid var(--border); background: var(--bg); color: var(--text); border-radius: 10px; font-size: 16px; text-align: center; margin-bottom: 12px; font-weight: 700; }
     .sub-card button { width: 100%; background: var(--primary); color: white; border: none; padding: 12px; border-radius: 10px; font-weight: 800; cursor: pointer; margin-bottom: 8px; font-size: 14px; }
-    .wa-btn { background: #059669 !important; }
-
-    .nav-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--card-bg); border-top: 1px solid var(--border); display: flex; justify-content: space-around; padding: 10px; z-index: 99; box-shadow: 0 -4px 15px rgba(0,0,0,0.03); }
-    .nav-item { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 10px; color: var(--text-muted); cursor: pointer; background: none; border: none; font-weight: 700; }
-    .nav-item.active { color: var(--primary); }
-    .nav-item i { font-size: 18px; }
-
     .btn-primary { background: var(--primary); color: white; border: none; padding: 12px 20px; border-radius: 10px; font-weight: 800; cursor: pointer; width: 100%; font-size: 14px; }
   </style>
 </head>
@@ -150,7 +75,7 @@
       <div class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
       <div class="logo-text">
         <h1>توجيهي بلس</h1>
-        <span>أرشيف امتحانات فلسطين الوزارية</span>
+        <span>جميع مواد المنهاج الفلسطيني</span>
       </div>
     </div>
     <div class="header-actions">
@@ -163,129 +88,88 @@
     <div class="moe-banner">
       <i class="fa-solid fa-award"></i>
       <div>
-        <h3>أرشيف الامتحانات الوزارية الرسمية</h3>
-        <p>مستخلصة مباشرة من أرشيف امتحانات فلسطين (الدورة الأولى والثانية).</p>
+        <h3>بنك الأسئلة غير المحدود</h3>
+        <p>اختر مادتك ودرب نفسك على آلاف الأسئلة الوزارية بدون قيود.</p>
       </div>
     </div>
 
-    <div class="promo-card">
-      <h2>أول 10 أسئلة وزارية مجانية لكل مادة! 🎁</h2>
-      <p>تدرب الآن على نمط الامتحانات الحقيقية. وعند إتمامها، اشترك بـ 10 شيكل فقط شهرياً لفتح كامل الأرشيف والعمل بدون إنترنت.</p>
-      <button class="promo-btn" onclick="openSubModal()">اشتترك بـ 10 شيكل فقط</button>
+    <div class="section-title">
+      <span>أقسام المواد الدراسية</span>
+      <span style="font-size:11px; color: var(--gold); font-weight:700;"><i class="fa-solid fa-gift"></i> أول 10 أسئلة مجانية</span>
     </div>
 
-    <div class="tabs">
-      <button class="tab active" onclick="switchTab('exams')">بنك الاختبارات الوزارية</button>
-      <button class="tab" onclick="switchTab('flashcards')">كبسولات التلخيص</button>
-    </div>
-
-    <div id="exams-section">
-      <div class="section-title">
-        <span>اختر المادة الدراسية</span>
-        <span style="font-size:11px; color: var(--gold); font-weight:700;"><i class="fa-solid fa-gift"></i> أول 10 أسئلة مجانية</span>
+    <!-- شبكة المواد (يمكنك إضافة أي عدد تريده من المواد هنا) -->
+    <div class="grid">
+      <div class="card" onclick="loadSubject('physics', 'الفيزياء')">
+        <span class="free-badge">أول 10 مجاناً</span>
+        <i class="fa-solid fa-atom"></i>
+        <h3>الفيزياء</h3>
+        <p>الفرع العلمي</p>
       </div>
-      <div class="grid">
-        <div class="card" onclick="openExam('الفيزياء')">
-          <span class="free-badge">مجاني أول 10</span>
-          <i class="fa-solid fa-atom"></i>
-          <h3>الفيزياء</h3>
-          <p>امتحانات السنوات السابقة</p>
-        </div>
-        <div class="card" onclick="openExam('الرياضيات')">
-          <span class="free-badge">مجاني أول 10</span>
-          <i class="fa-solid fa-square-root-variable"></i>
-          <h3>الرياضيات (علمي)</h3>
-          <p>أسئلة الوزارة المعتمدة</p>
-        </div>
-        <div class="card" onclick="openExam('اللغة الإنجليزية')">
-          <span class="free-badge">مجاني أول 10</span>
-          <i class="fa-solid fa-book-open"></i>
-          <h3>اللغة الإنجليزية</h3>
-          <p>القواعد والقطع الوزارية</p>
-        </div>
-        <div class="card" onclick="openExam('الكيمياء')">
-          <span class="free-badge">مجاني أول 10</span>
-          <i class="fa-solid fa-flask"></i>
-          <h3>الكيمياء</h3>
-          <p>الامتحانات الوزارية الشاملة</p>
-        </div>
+      <div class="card" onclick="loadSubject('math', 'الرياضيات')">
+        <span class="free-badge">أول 10 مجاناً</span>
+        <i class="fa-solid fa-square-root-variable"></i>
+        <h3>الرياضيات</h3>
+        <p>التفاضل والتكامل</p>
       </div>
-    </div>
-
-    <div id="flashcards-section" style="display: none;">
-      <div class="section-title">بطاقات المراجعة السريعة (تصفح Offline)</div>
-      <div class="grid">
-        <div class="card" onclick="openFlashcards('قوانين الفيزياء')">
-          <i class="fa-solid fa-bolt"></i>
-          <h3>قوانين الفيزياء</h3>
-          <p>أبرز قوانين وزاريات فلسطين</p>
-        </div>
-        <div class="card" onclick="openFlashcards('قواعد الإنجليزي')">
-          <i class="fa-solid fa-language"></i>
-          <h3>قواعد الإنجليزي</h3>
-          <p>أهم قواعد التوجيهي</p>
-        </div>
+      <div class="card" onclick="loadSubject('english', 'اللغة الإنجليزية')">
+        <span class="free-badge">أول 10 مجاناً</span>
+        <i class="fa-solid fa-book-open"></i>
+        <h3>اللغة الإنجليزية</h3>
+        <p>القواعد والقطع</p>
+      </div>
+      <div class="card" onclick="loadSubject('chemistry', 'الكيمياء')">
+        <span class="free-badge">أول 10 مجاناً</span>
+        <i class="fa-solid fa-flask"></i>
+        <h3>الكيمياء</h3>
+        <p>العضوية والغازات</p>
+      </div>
+      <div class="card" onclick="loadSubject('biology', 'العلوم الحياتية')">
+        <span class="free-badge">أول 10 مجاناً</span>
+        <i class="fa-solid fa-dna"></i>
+        <h3>العلوم الحياتية</h3>
+        <p>وراثة ووراثة جزيئية</p>
+      </div>
+      <div class="card" onclick="loadSubject('technology', 'التكنولوجيا')">
+        <span class="free-badge">أول 10 مجاناً</span>
+        <i class="fa-solid fa-laptop-code"></i>
+        <h3>التكنولوجيا</h3>
+        <p>البرمجة والشبكات</p>
       </div>
     </div>
   </div>
 
+  <!-- نافذة الاختبار الديناميكية -->
   <div class="modal" id="examModal">
     <div class="modal-content">
       <span class="close-modal" onclick="closeModal('examModal')">&times;</span>
-      <div class="question-counter" id="qCounter">السؤال 1 من أصل 15</div>
-      <h3 id="examModalTitle" style="margin-bottom: 14px; color: var(--primary); font-size: 16px;">بنك الاختبارات</h3>
+      <div class="question-counter" id="qCounter">السؤال 1</div>
+      <h3 id="examModalTitle" style="margin-bottom: 14px; color: var(--primary); font-size: 16px;">اختبار المادة</h3>
       <div class="question-box">
-        <div class="question-title" id="qText">السؤال سيظهر هنا...</div>
+        <div class="question-title" id="qText">جاري تحميل الأسئلة...</div>
         <div class="options" id="qOptions"></div>
-        <div class="explanation" id="qExp"><strong>الشرح الوزاري النموذجي:</strong> <br><span id="qExpText"></span></div>
+        <div class="explanation" id="qExp"><strong>الشرح الوزاري:</strong> <br><span id="qExpText"></span></div>
       </div>
       <button class="btn-primary" id="nextBtn" onclick="nextQuestion()" style="display:none;">السؤال التالي</button>
     </div>
   </div>
 
-  <div class="modal" id="flashModal">
-    <div class="modal-content">
-      <span class="close-modal" onclick="closeModal('flashModal')">&times;</span>
-      <h3 id="flashTitle" style="margin-bottom: 16px; color: var(--primary);">كبسولة المراجعة</h3>
-      <div class="flashcard" onclick="flipCard()">
-        <h4 id="flashFront">العنوان أو القانون</h4>
-        <p id="flashBack" style="margin-top: 10px;">اضغط لقراءة التفاصيل والشرح المختصر</p>
-      </div>
-      <button class="btn-primary" onclick="nextCard()">الكبسولة التالية</button>
-    </div>
-  </div>
-
+  <!-- نافذة الاشتراك -->
   <div class="sub-modal" id="subModal">
     <div class="sub-card">
       <span class="close-modal" style="position:static; float:left;" onclick="closeSubModal()">&times;</span>
       <h3>ترقية لحساب VIP (10 شيكل)</h3>
-      <p>لقد أتممت الأسئلة المجانية! لفتح **كافة أسئلة الأرشيف الوزاري بلا حدود** وللمدة الكاملة:<br>حّول 10 شيكل عبر محفظتي أو Jawwal Pay على الرقم:<br><strong style="color:var(--gold); font-size:16px;">0590000000</strong></p>
+      <p>أتممت الأسئلة المجانية! لفتح **جميع الأسئلة غير المحدودة** ولمدة 30 يوماً:<br>حّول 10 شيكل على الرقم:<br><strong style="color:var(--gold); font-size:16px;">0590000000</strong></p>
       <input type="text" id="voucherInput" placeholder="أدخل كود التفعيل">
       <button onclick="activateVoucher()">تفعيل الاشتراك فوراً</button>
-      <button class="wa-btn" onclick="window.open('https://wa.me/970590000000', '_blank')"><i class="fa-brands fa-whatsapp"></i> اطلب كود التفعيل عبر واتساب</button>
     </div>
   </div>
 
-  <nav class="nav-bar">
-    <button class="nav-item active" onclick="switchTab('exams')"><i class="fa-solid fa-pen-to-square"></i> الاختبارات</button>
-    <button class="nav-item" onclick="switchTab('flashcards')"><i class="fa-solid fa-bolt"></i> الكبسولات</button>
-    <button class="nav-item" onclick="openSubModal()"><i class="fa-solid fa-crown" style="color:var(--gold);"></i> الاشتراكات</button>
-  </nav>
-
   <script>
     let isSubscribed = localStorage.getItem('tawjihi_sub') === 'true';
-
-    function switchTab(tab) {
-      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-      if(tab === 'exams') {
-        document.getElementById('exams-section').style.display = 'block';
-        document.getElementById('flashcards-section').style.display = 'none';
-      } else {
-        document.getElementById('exams-section').style.display = 'none';
-        document.getElementById('flashcards-section').style.display = 'block';
-      }
-    }
+    let currentQuestions = [];
+    let currentQIndex = 0;
+    let currentSubjectName = '';
 
     function toggleDarkMode() {
       document.body.classList.toggle('dark-mode');
@@ -302,122 +186,57 @@
       if (code === 'GAZA10' || code.startsWith('GZ-')) {
         localStorage.setItem('tawjihi_sub', 'true');
         isSubscribed = true;
-        alert('مبارك! تم تفعيل اشتراكك الـ VIP بنجاح لجميع المواد لمدة 30 يوماً.');
+        alert('مبارك! تم تفعيل اشتراكك الـ VIP لجميع المواد بلا حدود.');
         closeSubModal();
       } else {
-        alert('كود التفعيل غير صحيح. يرجى التواصل عبر واتساب لطلب الكود.');
+        alert('كود التفعيل غير صحيح.');
       }
     }
 
-    // الأرشيف الوزاري المستخرج من منصات امتحانات فلسطين (15 سؤال لكل مادة: 10 مجاني + 5 VIP)
-    const examData = {
-      'الفيزياء': [
-        { q: "[وزاري] جسم كتلته 2kg أثّرت عليه قوة محصّلة مقدارها 8N، ما مقدار تسارعه؟", options: ["2 m/s²", "4 m/s²", "8 m/s²", "16 m/s²"], correct: 1, exp: "التسارع = القوة ÷ الكتلة = 8 ÷ 2 = 4 م/ث²." },
-        { q: "[وزاري] ما وحدة قياس الدفع في النظام الدولي للوحدات؟", options: ["N.s", "Joule", "Watt", "kg.m"], correct: 0, exp: "الدفع = التغير في الزخم الخطي ووحدته نيوتن.ثانية (N.s)." },
-        { q: "[وزاري] في التصادم المرن تماماً، الكميات الفيزيائية المحفوظة هي:", options: ["السرعة فقط", "الطاقة الحركية والزخم الخطي", "الطاقة الحركية فقط", "طاقة الوضع فقط"], correct: 1, exp: "التصادم المرن يحفظ كلا من الزخم الخطي والطاقة الحركية الكلية." },
-        { q: "[وزاري] العوامل التي يعتمد عليها الزخم الخطي لجسم متحرك هي:", options: ["الكتلة والسرعة المتجهة", "القوة والزمن", "الكتلة والتسارع", "المسافة والزمن"], correct: 0, exp: "الزخم p = m × v أي يعتمد على الكتلة والسرعة المتجهة." },
-        { q: "[وزاري] إذا تضاعفت سرعة جسم متحرك مع ثبات كتلته، فإن زخمه الخطي:", options: ["يقل للنصف", "يتضاعف مرتين", "يبقى ثابتاً", "يصبح ربعه"], correct: 1, exp: "العلاقة طردية خطية بين الزخم والسرعة." },
-        { q: "[وزاري] اتجاه الدفع المؤثر على جسم يكون دائماً في اتجاه:", options: ["القوة المحصلة المؤثرة", "عكس الحركة", "السرعة الابتدائية", "الجاذبية الأرضية"], correct: 0, exp: "الدفع كمية متجهة يتطابق اتجاهه مع اتجاه القوة المحصلة." },
-        { q: "[وزاري] معدل التغير الزمني للزخم الخطي لجسم يساوي:", options: ["الشغل", "القوة المحصلة", "الدفع", "الطاقة الحركية"], correct: 1, exp: "من قانون نيوتن الثاني: ق = Δp / Δt." },
-        { q: "[وزاري] وحدة قياس (kg.m/s) تكافئ وحدة:", options: ["N.s", "Joule", "Pascal", "Watt"], correct: 0, exp: "كيلوغرام.متر لكل ثانية تكافئ نيوتن.ثانية." },
-        { q: "[وزاري] في التصادم عديم المرونة، تكون الطاقة الحركية بعد التصادم:", options: ["أكبر من قبل التصادم", "أقل من قبل التصادم", "مساوية تماماً", "تساوي صفراً"], correct: 1, exp: "يحدث فقد في الطاقة الحركية وتحولها لأشكال أخرى." },
-        { q: "[وزاري] المساحة تحت منحنى (القوة - الزمن) تمثل رياضياً:", options: ["الشغل", "الدفع", "التسارع", "القدرة"], correct: 1, exp: "المساحة تحت منحنى القوة والزمن تعطي الدفع." },
-        // VIP
-        { q: "[وزاري VIP] بندقية كتلتها 2kg تطلق رصاصة كتلتها 10g بسرعة 200m/s، سرعة الارتداد هي:", options: ["-1 m/s", "-2 m/s", "-0.5 m/s", "-4 m/s"], correct: 0, exp: "حفظ الزخم: 2ع + (0.01 × 200) = 0 ومنها ع = -1." },
-        { q: "[وزاري VIP] الشغل المبذول لتغيير طاقة الحركة يساوي:", options: ["التغير في الطاقة الحركية", "الدفع", "الزخم", "القدرة"], correct: 0, exp: "مبرهنة الشغل وطاقة الحركة." },
-        { q: "[وزاري VIP] متى يكون الزخم الكلي لنظام مكون من جسمين مساوياً للصفر؟", options: ["عندما يتحركان بنفس السرعة", "إذا تساوى الزخمان بالمقدار وتعاكسا بالاتجاه", "عند انعدام الكتلة", "لا يمكن"], correct: 1, exp: "المجموع المتجهي يكون صفراً إذا تعاكسا وتساويا." },
-        { q: "[وزاري VIP] صاروخ يتحرك في الفضاء استهلك وقوده بانتظام، سرعته:", options: ["تزداد بانتظام", "تقل", "ثابتة", "تنعدم"], correct: 0, exp: "بسبب تناقص الكتلة مع ثبات قوة الدفع تزداد السرعة." },
-        { q: "[وزاري VIP] الزخم الخطي كمية:", options: ["قياسية", "متجهة", "أساسية", "لا شيء مما ذكر"], correct: 1, exp: "لأنها حاصل ضرب كمية قياسية (الكتلة) بكمية متجهة (السرعة)." }
-      ],
-      'الرياضيات': [
-        { q: "[وزاري] ما مشتقة الاقتران ص = جتا(س)؟", options: ["جا(س)", "-جا(س)", "ظا(س)", "-جتا(س)"], correct: 1, exp: "مشتقة جيب التمام هي سالب الجيب." },
-        { q: "[وزاري] قيمة نهاية (س² - 4) ÷ (س - 2) عندما س تؤول إلى 2:", options: ["صفر", "2", "4", "غير متوفرة"], correct: 2, exp: "بالتحليل والاختصار ينتج 2 + 2 = 4." },
-        { q: "[وزاري] مشتقة أي اقتران ثابت تساوي:", options: ["واحد", "صفر", "الاقتران نفسه", "ما لا نهاية"], correct: 1, exp: "مشتقة الثابت دائماً صفر." },
-        { q: "[وزاري] إذا كان ص = س³، فإن ص' تساوي:", options: ["3س", "3س²", "س²", "6س"], correct: 1, exp: "قاعدة الاشتقاق: 3س²." },
-        { q: "[وزاري] ميل المماس لمنحنى الاقتران عند نقطة يمثل:", options: ["المشتقة الأولى", "التكامل", "النهاية", "الصفر"], correct: 0, exp: "المشتقة هندسياً هي ميل المماس." },
-        { q: "[وزاري] مشتقة حاصل ضرب اقترانين (أ × ب) تساوي:", options: ["أ' × ب'", "الأول × مشتقة الثاني + الثاني × مشتقة الأول", "أ ÷ ب", "المجموع"], correct: 1, exp: "قاعدة الضرب الشهيرة." },
-        { q: "[وزاري] تكامل العدد الثابت (أ) بالنسبة لمتغير س هو:", options: ["أ + ج", "أ س + ج", "صفر", "س² + ج"], correct: 1, exp: "تكامل الثابت يضرب في س مضافاً إليه ج." },
-        { q: "[وزاري] ما تكامل الاقتران س² دَس؟", options: ["2س + ج", "س³ / 3 + ج", "س³ + ج", "3س + ج"], correct: 1, exp: "إضافة واحد للأس والقسمة على الأس الجديد." },
-        { q: "[وزاري] قيمة نهاية س عندما س تؤول إلى 5 هي:", options: ["صفر", "1", "5", "غير موجودة"], correct: 2, exp: "بالتعويض المباشر الناتج 5." },
-        { q: "[وزاري] شرط قابلية الاشتقاق للاقتران عند نقطة هو:", options: ["الأتصال ووجود مماس وحيد", "الانفصال", "وجود زاوية", "لا يشترط الاتصال"], correct: 0, exp: "الاتصال شرط أساسي لوجود المشتقة." },
-        // VIP
-        { q: "[وزاري VIP] المشتقة الثانية للاقتران ص = جا(س) هي:", options: ["-جتا(س)", "-جا(س)", "جتا(س)", "جا(س)"], correct: 1, exp: "مشتقة الجا جتا، ومشتقة الجتا سالب جا." },
-        { q: "[وزاري VIP] نقطة الانعطاف يحدث عندها:", options: ["تغير في تقعر منحنى الاقتران", "صفر في المشتقة الأولى فقط", "قيمة عظمى مطلقة", "انعدام الاقتران"], correct: 0, exp: "تعريف نقطة الانعطاف في التفاضل والتكامل." },
-        { q: "[وزاري VIP] التكامل المحدود هندسياً يمثل:", options: ["المساحة تحت المنحنى", "الميل", "السرعة", "الحجم"], correct: 0, exp: "المعنى الهندسي للتكامل المحدود." },
-        { q: "[وزاري VIP] تكامل العدد 4 دَس من 1 إلى 3 يساوي:", options: ["4", "8", "12", "16"], correct: 1, exp: "(3 - 1) × 4 = 8." },
-        { q: "[وزاري VIP] المعدلات المرتبطة بالزمن تعتمد على قاعدة:", options: ["السلسلة (Chain Rule)", "القسمة", "التعويض", "الضرب التبادلي"], correct: 0, exp: "قاعدة السلسلة هي الأساس في حل معدلات الزمن." }
-      ],
-      'اللغة الإنجليزية': [
-        { q: "[وزاري] If I ___ hard, I would have passed the exam.", options: ["study", "studied", "had studied", "have studied"], correct: 2, exp: "الحالة الثالثة لـ If تتطلب ماضي تام (had studied)." },
-        { q: "[وزاري] Ibn Battuta was a famous ___ who travelled across the world.", options: ["chemist", "traveller", "inventor", "engineer"], correct: 1, exp: "ابن بطوطة كان رحالة (traveller)." },
-        { q: "[وزاري] She has been working here ___ three years.", options: ["since", "for", "from", "during"], correct: 1, exp: "تستخدم for مع المدة الزمنية." },
-        { q: "[وزاري] By this time next year, we ___ our school.", options: ["will finish", "will have finished", "finish", "finished"], correct: 1, exp: "المستقبل التام by this time next year." },
-        { q: "[وزاري] Choose the correct spelling:", options: ["Successful", "Sucesful", "Succesfull", "Sucsessful"], correct: 0, exp: "التهجئة الصحيحة successful." },
-        { q: "[وزاري] Ali asked me where ___.", options: ["do I live", "I lived", "did I live", "living"], correct: 1, exp: "الكلام المنقول يحول الفعل للماضي ويكون الفاعل قبل الفعل." },
-        { q: "[وزاري] The new project ___ next Monday.", options: ["starts", "started", "is starting", "will start"], correct: 0, exp: "المضارع البسيط للمواعيد والجداول الرسمية." },
-        { q: "[وزاري] If only I ___ earlier this morning!", options: ["get up", "got up", "had got up", "have got up"], correct: 2, exp: "التمني في الماضي (If only + Past Perfect)." },
-        { q: "[وزاري] Water ___ at 100 degrees Celsius.", options: ["boil", "boils", "boiled", "is boiling"], correct: 1, exp: "حقائق علمية ثابتة بالمضارع البسيط." },
-        { q: "[وزاري] He speaks English very ___.", options: ["good", "fluent", "fluently", "bad"], correct: 2, exp: "نصف الفعل بـ Adverb وهو fluently." },
-        // VIP
-        { q: "[وزاري VIP] Neither Ali nor his friends ___ coming.", options: ["is", "are", "was", "has"], correct: 1, exp: "الفعل يتبع الاسم الأقرب (friends جمع فتأخذ are)." },
-        { q: "[وزاري VIP] It is essential that he ___ on time.", options: ["arrive", "arrives", "arrived", "arriving"], correct: 0, exp: "صيغة الشك أو الطلب يأتي بعدها الفعل مجرداً." },
-        { q: "[وزاري VIP] Hard ___ he work, he couldn't pass.", options: ["though", "as", "however", "all of them"], correct: 3, exp: "جميعها تستخدم للتناقض المتقدم." },
-        { q: "[وزاري VIP] The report ___ by the manager yesterday.", options: ["wrote", "was written", "is written", "writing"], correct: 1, exp: "مبني للمجهول في الماضي البسيط." },
-        { q: "[وزاري VIP] I wish I ___ a car now.", options: ["have", "had", "will have", "had had"], correct: 1, exp: "التمني في الحاضر بـ wish يتطلب ماضي بسيط (had)." }
-      ],
-      'الكيمياء': [
-        { q: "[وزاري] بالون مملوء بالهيليوم حجمه 300mL عند ضغط 1 atm، أصبح الضغط 0.63 atm، ما حجمه الجديد؟", options: ["476.2 mL", "300 mL", "189 mL", "500 mL"], correct: 0, exp: "قانون بويل P1V1 = P2V2." },
-        { q: "[وزاري] العلاقة بين حجم الغاز ودرجة حرارته المطلقة عند ثبات الضغط:", options: ["عكسية", "طردية (قانون شارل)", "ثابتة", "أسية"], correct: 1, exp: "قانون شارل: الحجم يتناسب طردياً مع الحرارة المطلقة." },
-        { q: "[وزاري] أي الغازات التالية يعد الأكثر مثالية في الظروف العادية؟", options: ["الهيليوم He", "الأمونيا NH3", "بخار الماء H2O", "ثاني أكسيد الكربون CO2"], correct: 0, exp: "الغازات النبيلة كالهيليوم هي الأقرب للسلوك المثالي." },
-        { q: "[وزاري] الضغط المعياري (STP) يقدر بـ:", options: ["1 atm و 0 °C", "2 atm و 25 °C", "1 atm و 100 °C", "0.5 atm و 0 °C"], correct: 0, exp: "الظروف المعيارية: ضغط 1 جو وحرارة صفر مئوي." },
-        { q: "[وزاري] الحجم المولي لأي غاز مثالي في STP يساوي:", options: ["22.4 لتر", "1 لتر", "10 لتر", "24.5 لتر"], correct: 0, exp: "الحجم المولي في الظروف المعيارية هو 22.4 L." },
-        { q: "[وزاري] الصيغة العامة للألكانات هي:", options: ["CnH2n", "CnH2n+2", "CnH2n-2", "CnHn"], correct: 1, exp: "الألكانات هيدروكربونات مشبعة صيغتها CnH2n+2." },
-        { q: "[وزاري] أبسط ألكان في الكيمياء العضوية هو:", options: ["إيثان", "ميثان", "بروبان", "بيوتان"], correct: 1, exp: "الميثان CH4 هو أبسط هيدروكربون." },
-        { q: "[وزاري] المركب العضوي الذي يحتوي على رابطة ثنائية يسمى:", options: ["ألكان", "ألكين", "ألكاين", "كحول"], correct: 1, exp: "الألكينات تحتوي على رابطة ثنائية واحدة على الأقل." },
-        { q: "[وزاري] تحويل الكحول إلى ألديهايد يعد عملية:", options: ["اختزال", "تأكسد", "هدرجة", "تميؤ"], correct: 1, exp: "تأكسد الكحولات الأولية ينتج ألديهيدات." },
-        { q: "[وزاري] المجموعة الفعالة المميزة لعائلة الكحولات هي:", options: ["الهيدروكسيل (-OH)", "الكربونيل", "الكاربوكسيل", "الإيثر"], correct: 0, exp: "مجموعة الهيدروكسيل تميز الكحولات." },
-        // VIP
-        { q: "[وزاري VIP] نوع التهجين لذرة الكربون في الألكاينات هو:", options: ["sp3", "sp2", "sp", "d2sp3"], correct: 2, exp: "الألكاينات ذات الرابطة الثلاثية يكون تهجينها sp." },
-        { q: "[وزاري VIP] مركب صيغته C2H6O قد يمثل:", options: ["كحول إيثيلي أو إيثر", "حمض أسيتيك فقط", "ألدهيد فقط", "ألكان حلقي"], correct: 0, exp: "متصاوغات الأثيرات والكحولات." },
-        { q: "[وزاري VIP] قانون الغاز المثالي يكتب رياضياً كالتالي:", options: ["PV = nRT", "P = VRT", "V = nPT", "P/V = RT"], correct: 0, exp: "معادلة الحالة للغاز المثالي PV=nRT." },
-        { q: "[وزاري VIP] زيادة الضغط على غاز محصور مع ثبات الحرارة تجعل الحجم:", options: ["يزداد", "يقل", "ثابتاً", "ينعدم"], correct: 1, exp: "علاقة عكسية حسب قانون بويل." },
-        { q: "[وزاري VIP] العائلات العضوية غير القطبية بشكل أساسي هي:", options: ["الألكانات", "الكحولات", "الأحماض", "الإيثرات"], correct: 0, exp: "الألكانات تعتبر هيدروكربونات غير قطبية." }
-      ]
-    };
-
-    let currentSubject = '';
-    let currentQIndex = 0;
-
-    function openExam(subject) {
-      currentSubject = subject;
+    // دالة سحب الأسئلة ديناميكياً من مجلد الـ data
+    async function loadSubject(fileName, subjectName) {
+      currentSubjectName = subjectName;
       currentQIndex = 0;
-      document.getElementById('examModalTitle').innerText = `أرشيف وزاري: ${subject} (فلسطين)`;
+      document.getElementById('examModalTitle').innerText = `بنك أسئلة: ${subjectName}`;
       document.getElementById('examModal').style.display = 'flex';
-      loadQuestion();
+      document.getElementById('qText').innerText = "جاري تحميل الأسئلة...";
+
+      try {
+        const response = await fetch(`data/${fileName}.json`);
+        if (!response.ok) throw new Error("الملف غير موجود");
+        const data = await response.json();
+        currentQuestions = data.questions;
+        renderQuestion();
+      } catch (error) {
+        // في حال لم تقم بإنشاء ملف الـ JSON بعد، نعرض أسئلة افتراضية للتجربة
+        currentQuestions = [
+          { q: `سؤال تجريبي أول في ${subjectName}`, options: ["خيار أ", "خيار ب", "خيار ج", "خيار د"], correct: 0, exp: "شرح تجريبي مبسط." },
+          { q: `سؤال تجريبي ثانٍ في ${subjectName}`, options: ["خيار أ", "خيار ب", "خيار ج", "خيار د"], correct: 1, exp: "شرح تجريبي مبسط." }
+        ];
+        renderQuestion();
+      }
     }
 
-    function loadQuestion() {
-      const questions = examData[currentSubject] || examData['الفيزياء'];
-      
+    function renderQuestion() {
       if (currentQIndex >= 10 && !isSubscribed) {
         document.getElementById('examModal').style.display = 'none';
         openSubModal();
         return;
       }
 
-      if(currentQIndex >= questions.length) {
-        document.getElementById('qCounter').innerText = "إنهاء الاختبار";
-        document.getElementById('qText').innerText = "أحسنت! لقد أتممت كافة أسئلة الأرشيف الوزاري لهذه المادة بنجاح 🎉";
+      if (currentQIndex >= currentQuestions.length) {
+        document.getElementById('qCounter').innerText = "نهاية الاختبار";
+        document.getElementById('qText').innerText = "أحسنت! أتممت كافة الأسئلة المتوفرة لهذه المادة 🎉";
         document.getElementById('qOptions').innerHTML = '';
         document.getElementById('qExp').style.display = 'none';
         document.getElementById('nextBtn').style.display = 'none';
         return;
       }
 
-      document.getElementById('qCounter').innerText = `السؤال ${currentQIndex + 1} من أصل ${questions.length}`;
-      const q = questions[currentQIndex];
+      document.getElementById('qCounter').innerText = `السؤال ${currentQIndex + 1} من أصل ${currentQuestions.length}`;
+      const q = currentQuestions[currentQIndex];
       document.getElementById('qText').innerText = q.q;
-      
+
       const optContainer = document.getElementById('qOptions');
       optContainer.innerHTML = '';
       q.options.forEach((opt, idx) => {
@@ -434,7 +253,7 @@
     function checkAnswer(element, selected, correct, exp) {
       const options = document.querySelectorAll('.option');
       options.forEach(opt => opt.style.pointerEvents = 'none');
-      if(selected === correct) {
+      if (selected === correct) {
         element.classList.add('correct');
       } else {
         element.classList.add('wrong');
@@ -447,40 +266,7 @@
 
     function nextQuestion() {
       currentQIndex++;
-      loadQuestion();
-    }
-
-    const flashData = {
-      'قوانين الفيزياء': [
-        { front: "الزخم الخطي (p)", back: "الكتلة × السرعة المتجهة (p = m × v) وتُقاس بـ (kg.m/s)" },
-        { front: "الدفع (I)", back: "القوة المحصلة × زمن التأثير (I = F × Δt = Δp)" }
-      ],
-      'قواعد الإنجليزي': [
-        { front: "Present Perfect (المضارع التام)", back: "Sub + has/have + V3 (لأحداث انتهت ولها أثر في الحاضر)" }
-      ]
-    };
-
-    let currentFlashCategory = 'قوانين الفيزياء';
-    let currentFlashIndex = 0;
-
-    function openFlashcards(category) {
-      currentFlashCategory = category;
-      currentFlashIndex = 0;
-      document.getElementById('flashTitle').innerText = category;
-      document.getElementById('flashModal').style.display = 'flex';
-      loadFlashcard();
-    }
-
-    function loadFlashcard() {
-      const cards = flashData[currentFlashCategory];
-      const card = cards[currentFlashIndex % cards.length];
-      document.getElementById('flashFront').innerText = card.front;
-      document.getElementById('flashBack').innerText = card.back;
-    }
-
-    function nextCard() {
-      currentFlashIndex++;
-      loadFlashcard();
+      renderQuestion();
     }
   </script>
 </body>
