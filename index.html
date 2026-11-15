@@ -91,4 +91,218 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div onclick="loadSubject('arabic', 'اللغة العربية (تخصص)')" class="bg-white hover:border-amber-400 border border-slate-200 p-5 rounded-3xl transition-all cursor-pointer shadow-sm hover:shadow-md group relative">
-                    <span class="absolute top-4 left-4 bg-amber-50 text
+                    <span class="absolute top-4 left-4 bg-amber-50 text-amber-700 border border-amber-200 text-[10px] font-bold px-2.5 py-1 rounded-full">أول 10 مجاناً</span>
+                    <div class="text-3xl mb-3">📚</div>
+                    <h4 class="font-black text-slate-900 text-base mb-1 group-hover:text-amber-600 transition">العربية تخصص</h4>
+                    <p class="text-xs text-slate-500">البلاغة والنقد والأدب</p>
+                </div>
+                <div onclick="loadSubject('history', 'الدراسات التاريخية')" class="bg-white hover:border-amber-400 border border-slate-200 p-5 rounded-3xl transition-all cursor-pointer shadow-sm hover:shadow-md group relative">
+                    <span class="absolute top-4 left-4 bg-amber-50 text-amber-700 border border-amber-200 text-[10px] font-bold px-2.5 py-1 rounded-full">أول 10 مجاناً</span>
+                    <div class="text-3xl mb-3">🏛️</div>
+                    <h4 class="font-black text-slate-900 text-base mb-1 group-hover:text-amber-600 transition">التاريخ</h4>
+                    <p class="text-xs text-slate-500">التاريخ الحديث والمعاصر</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- صندوق الاختبار -->
+        <section id="quiz-section" class="hidden bg-white border border-slate-200 rounded-3xl p-6 shadow-xl">
+            <div class="flex justify-between items-center mb-4 border-b border-slate-100 pb-3">
+                <span id="quiz-subject-title" class="text-indigo-950 font-black text-sm">اسم المادة</span>
+                <span id="question-counter" class="text-xs bg-slate-100 text-slate-600 px-3 py-1 rounded-full font-bold">السؤال 1 من أصل 0</span>
+            </div>
+
+            <div id="question-box" class="mb-5 text-base font-bold leading-relaxed text-slate-900">
+                جاري التحميل من أرشيف الوزارة...
+            </div>
+
+            <div id="options-box" class="space-y-3 mb-5"></div>
+
+            <div id="explanation-box" class="hidden bg-amber-50 border border-amber-200 p-4 rounded-2xl text-xs mb-4 text-amber-900">
+                <span class="font-bold block mb-1">💡 التوضيح الوزاري:</span>
+                <p id="explanation-text" class="leading-relaxed"></p>
+            </div>
+
+            <div class="flex justify-between items-center mt-6 pt-3 border-t border-slate-100">
+                <button onclick="backToSubjects()" class="text-slate-500 hover:text-slate-900 text-xs font-bold px-3 py-2 transition">
+                    ← إرجاع للمواد
+                </button>
+                <button id="next-btn" onclick="nextQuestion()" class="hidden bg-indigo-950 hover:bg-indigo-900 text-white font-bold px-6 py-2.5 rounded-xl text-xs transition shadow-md">
+                    السؤال التالي ←
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- شريط التنقل السفلي -->
+    <nav class="bg-white border-t border-slate-200 py-3 px-6 sticky bottom-0 z-40 shadow-lg">
+        <div class="container mx-auto max-w-4xl flex justify-around items-center text-center">
+            <button onclick="switchBranch('sci')" class="flex flex-col items-center text-indigo-950 font-bold text-xs gap-1">
+                <span class="text-xl">⚡</span>
+                <span>الفرع العلمي</span>
+            </button>
+            <button onclick="switchBranch('lit')" class="flex flex-col items-center text-slate-400 hover:text-slate-800 text-xs gap-1">
+                <span class="text-xl">📚</span>
+                <span>الفرع الأدبي</span>
+            </button>
+            <button onclick="openVipModal()" class="flex flex-col items-center text-amber-600 font-bold text-xs gap-1">
+                <span class="text-xl">👑</span>
+                <span>اشتراك 10 شيكل</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- نافذة تفعيل VIP -->
+    <div id="vip-modal" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
+        <div class="bg-white border border-slate-200 w-full max-w-sm p-6 rounded-3xl shadow-2xl text-slate-900">
+            <h3 class="text-base font-black text-slate-900 mb-1">تفعيل الباقة الكاملة (10 شيكل)</h3>
+            <p class="text-xs text-slate-500 mb-4 leading-relaxed">أدخل كود التفعيل الخاص بك لفتح مئات الأسئلة الوزارية بلا حدود:</p>
+            <input type="text" id="vip-code-input" placeholder="مثال: GAZA10" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-center text-indigo-950 font-bold tracking-widest mb-4 focus:outline-none focus:border-indigo-600 text-sm">
+            <div class="flex space-x-2 space-x-reverse">
+                <button onclick="activateVip()" class="flex-1 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-2.5 rounded-xl text-xs transition">تفعيل الآن</button>
+                <button onclick="closeVipModal()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2.5 rounded-xl text-xs transition">إلغاء</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- الدوال البرمجية المسؤولة عن تشغيل الأزرار وجلب ملفات الـ JSON -->
+    <script>
+        let currentQuestions = [];
+        let currentIndex = 0;
+        let isVip = localStorage.getItem('tawjihi_vip') === 'true';
+
+        function switchBranch(branch) {
+            const btnSci = document.getElementById('btn-sci');
+            const btnLit = document.getElementById('btn-lit');
+            const secSci = document.getElementById('section-sci');
+            const secLit = document.getElementById('section-lit');
+
+            if (branch === 'sci') {
+                btnSci.className = "flex-1 py-3 rounded-xl font-bold text-sm transition-all bg-indigo-950 text-white shadow";
+                btnLit.className = "flex-1 py-3 rounded-xl font-bold text-sm transition-all text-slate-600 hover:text-slate-900";
+                secSci.classList.remove('hidden');
+                secLit.classList.add('hidden');
+            } else {
+                btnLit.className = "flex-1 py-3 rounded-xl font-bold text-sm transition-all bg-indigo-950 text-white shadow";
+                btnSci.className = "flex-1 py-3 rounded-xl font-bold text-sm transition-all text-slate-600 hover:text-slate-900";
+                secLit.classList.remove('hidden');
+                secSci.classList.add('hidden');
+            }
+        }
+
+        async function loadSubject(subjectKey, subjectName) {
+            document.getElementById('section-sci').classList.add('hidden');
+            document.getElementById('section-lit').classList.add('hidden');
+            document.getElementById('main-banner').classList.add('hidden');
+            document.getElementById('branch-tabs').classList.add('hidden');
+            
+            document.getElementById('quiz-section').classList.remove('hidden');
+            document.getElementById('quiz-subject-title').innerText = "بنك الوزارة: " + subjectName;
+            document.getElementById('question-box').innerText = "جاري تحميل الأسئلة من أرشيف الوزارة...";
+            document.getElementById('options-box').innerHTML = "";
+
+            try {
+                let response = await fetch(`data/${subjectKey}.json`);
+                if (!response.ok) throw new Error("تعذر جلب ملف المادة");
+                
+                let data = await response.json();
+                currentQuestions = data.questions;
+                currentIndex = 0;
+                
+                showQuestion();
+            } catch (error) {
+                console.error(error);
+                document.getElementById('question-box').innerText = "عذراً، تأكد من وجود ملف المادة في مجلد data بشكل صحيح على جيت هب.";
+            }
+        }
+
+        function showQuestion() {
+            if (!isVip && currentIndex >= 10) {
+                document.getElementById('quiz-section').innerHTML = `
+                    <div class="text-center py-8">
+                        <span class="text-4xl block mb-3">🔒</span>
+                        <h3 class="text-base font-bold text-amber-600 mb-1">وصلت للحد المجاني (10 أسئلة)</h3>
+                        <p class="text-xs text-slate-500 mb-5">لفتح كافة الأسئلة والحلول الوزارية، فعّل حسابك بـ 10 شيكل فقط!</p>
+                        <button onclick="openVipModal()" class="bg-amber-500 text-slate-950 font-bold px-5 py-2.5 rounded-xl text-xs shadow">أدخل كود التفعيل</button>
+                        <br><br>
+                        <button onclick="backToSubjects()" class="text-slate-400 text-xs underline">العودة للمواد</button>
+                    </div>
+                `;
+                return;
+            }
+
+            if (currentIndex >= currentQuestions.length) {
+                document.getElementById('quiz-section').innerHTML = `
+                    <div class="text-center py-8">
+                        <span class="text-4xl block mb-3">🎉</span>
+                        <h3 class="text-base font-bold text-indigo-950 mb-1">أحسنت! أنهيت الأسئلة المتوفرة</h3>
+                        <p class="text-xs text-slate-500 mb-5">أنت جاهز للامتحان الوزاري بامتياز.</p>
+                        <button onclick="backToSubjects()" class="bg-indigo-950 text-white font-bold px-5 py-2.5 rounded-xl text-xs shadow">اختر مادة أخرى</button>
+                    </div>
+                `;
+                return;
+            }
+
+            let qData = currentQuestions[currentIndex];
+            document.getElementById('question-counter').innerText = `السؤال ${currentIndex + 1} من أصل ${currentQuestions.length}`;
+            document.getElementById('question-box').innerText = qData.q;
+            
+            let optionsHTML = "";
+            qData.options.forEach((opt, idx) => {
+                optionsHTML += `<button onclick="checkAnswer(${idx}, ${qData.correct})" class="option-btn w-full text-right bg-slate-50 hover:bg-slate-100 border border-slate-200 p-3.5 rounded-2xl transition text-slate-800 text-sm font-bold shadow-sm">${opt}</button>`;
+            });
+            document.getElementById('options-box').innerHTML = optionsHTML;
+            document.getElementById('explanation-box').classList.add('hidden');
+            document.getElementById('next-btn').classList.add('hidden');
+        }
+
+        function checkAnswer(selected, correct) {
+            let buttons = document.querySelectorAll('.option-btn');
+            buttons.forEach((btn, idx) => {
+                btn.disabled = true;
+                if (idx === correct) {
+                    btn.classList.remove('bg-slate-50', 'border-slate-200');
+                    btn.classList.add('bg-emerald-600', 'border-emerald-500', 'text-white');
+                } else if (idx === selected) {
+                    btn.classList.remove('bg-slate-50', 'border-slate-200');
+                    btn.classList.add('bg-rose-600', 'border-rose-500', 'text-white');
+                }
+            });
+
+            let qData = currentQuestions[currentIndex];
+            if (qData.exp) {
+                document.getElementById('explanation-text').innerText = qData.exp;
+                document.getElementById('explanation-box').classList.remove('hidden');
+            }
+
+            document.getElementById('next-btn').classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            currentIndex++;
+            showQuestion();
+        }
+
+        function backToSubjects() {
+            location.reload();
+        }
+
+        function openVipModal() { document.getElementById('vip-modal').classList.remove('hidden'); }
+        function closeVipModal() { document.getElementById('vip-modal').classList.add('hidden'); }
+
+        function activateVip() {
+            let code = document.getElementById('vip-code-input').value.trim();
+            if (code === "GAZA10" || code.startsWith("GZ-")) {
+                localStorage.setItem('tawjihi_vip', 'true');
+                isVip = true;
+                alert("مبروك! تم تفعيل الباقة الكاملة بنجاح 🎉");
+                closeVipModal();
+                location.reload();
+            } else {
+                alert("الكود غير صحيح، تأكد من الكود المدخل.");
+            }
+        }
+    </script>
+</body>
+</html>
