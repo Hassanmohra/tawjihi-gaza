@@ -1,0 +1,29 @@
+{
+  "subject": "اللغة الإنجليزية - التوجيهي",
+  "questions": [
+    {
+      "q": "[وزاري] Choose: If I ___ hard, I would have passed the exam.",
+      "options": ["study", "studied", "had studied", "have studied"],
+      "correct": 2,
+      "exp": "الحالة الثالثة لـ If تتطلب ماضي تام (had studied) في جملة الشرط."
+    },
+    {
+      "q": "[وزاري] Ibn Battuta was a famous ___ who travelled across the world.",
+      "options": ["chemist", "traveller", "inventor", "engineer"],
+      "correct": 1,
+      "exp": "ابن بطوطة كان رحالة مشهوراً (traveller)."
+    },
+    {
+      "q": "[وزاري] She has been working here ___ three years.",
+      "options": ["since", "for", "from", "during"],
+      "correct": 1,
+      "exp": "نستخدم (for) مع المدة الزمنية المحددة (three years)."
+    },
+    {
+      "q": "[وزاري] By this time next year, we ___ our school.",
+      "options": ["will finish", "will have finished", "finish", "finished"],
+      "correct": 1,
+      "exp": "تعبير (By this time next year) يدل على الزمن المستقبل التام (will have + V3)."
+    }
+  ]
+}
