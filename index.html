@@ -14,7 +14,7 @@
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col selection:bg-amber-500 selection:text-slate-950">
 
     <!-- شاشة الهيدر -->
-    <header class="bg-slate-900/80 backdrop-blur-md border-b border-amber-500/20 p-4 sticky top-0 z-50 shadow-lg">
+    <header class="bg-slate-900/90 backdrop-blur-md border-b border-amber-500/20 p-4 sticky top-0 z-50 shadow-lg">
         <div class="container mx-auto max-w-2xl flex justify-between items-center">
             <div class="flex items-center space-x-3 space-x-reverse">
                 <div class="bg-gradient-to-tr from-amber-500 to-amber-400 text-slate-950 font-black p-2.5 rounded-2xl text-lg shadow-md shadow-amber-500/20">🇹🇼</div>
@@ -33,39 +33,39 @@
     <main class="container mx-auto p-4 flex-grow max-w-2xl">
         
         <!-- قسم اختيار المواد -->
-        <section id="subjects-section" class="mb-6 animate-fadeIn">
+        <section id="subjects-section" class="mb-6">
             <div class="flex items-center justify-between mb-4">
                 <h2 class="text-base font-bold text-slate-200 border-r-4 border-amber-500 pr-3">اختر المادة الدراسية:</h2>
                 <span class="text-xs bg-slate-900 border border-slate-800 text-amber-400 px-3 py-1 rounded-full">الفرعين العلمي والأدبي</span>
             </div>
             
             <div class="grid grid-cols-2 gap-3">
-                <button onclick="loadSubject('physics', 'الفيزياء (علمي)')" class="bg-slate-900 hover:bg-slate-800/80 border border-slate-800/80 hover:border-amber-500/50 p-4 rounded-2xl text-right transition-all group shadow-sm">
+                <button onclick="loadSubject('physics', 'الفيزياء (علمي)')" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-amber-500/50 p-4 rounded-2xl text-right transition-all group shadow-sm">
                     <span class="text-2xl block mb-2 group-hover:scale-110 transition-transform">⚡</span>
                     <span class="font-bold text-amber-400 block text-sm">الفيزياء</span>
                     <span class="text-[11px] text-slate-400">الفرع العلمي</span>
                 </button>
-                <button onclick="loadSubject('math_sci', 'الرياضيات (علمي)')" class="bg-slate-900 hover:bg-slate-800/80 border border-slate-800/80 hover:border-amber-500/50 p-4 rounded-2xl text-right transition-all group shadow-sm">
+                <button onclick="loadSubject('math_sci', 'الرياضيات (علمي)')" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-amber-500/50 p-4 rounded-2xl text-right transition-all group shadow-sm">
                     <span class="text-2xl block mb-2 group-hover:scale-110 transition-transform">📐</span>
                     <span class="font-bold text-amber-400 block text-sm">الرياضيات</span>
                     <span class="text-[11px] text-slate-400">الفرع العلمي</span>
                 </button>
-                <button onclick="loadSubject('chemistry', 'الكيمياء (علمي)')" class="bg-slate-900 hover:bg-slate-800/80 border border-slate-800/80 hover:border-amber-500/50 p-4 rounded-2xl text-right transition-all group shadow-sm">
+                <button onclick="loadSubject('chemistry', 'الكيمياء (علمي)')" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-amber-500/50 p-4 rounded-2xl text-right transition-all group shadow-sm">
                     <span class="text-2xl block mb-2 group-hover:scale-110 transition-transform">🧪</span>
                     <span class="font-bold text-amber-400 block text-sm">الكيمياء</span>
                     <span class="text-[11px] text-slate-400">الفرع العلمي</span>
                 </button>
-                <button onclick="loadSubject('biology', 'العلوم الحياتية (علمي)')" class="bg-slate-900 hover:bg-slate-800/80 border border-slate-800/80 hover:border-amber-500/50 p-4 rounded-2xl text-right transition-all group shadow-sm">
+                <button onclick="loadSubject('biology', 'العلوم الحياتية (علمي)')" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-amber-500/50 p-4 rounded-2xl text-right transition-all group shadow-sm">
                     <span class="text-2xl block mb-2 group-hover:scale-110 transition-transform">🧬</span>
                     <span class="font-bold text-amber-400 block text-sm">العلوم الحياتية</span>
                     <span class="text-[11px] text-slate-400">الفرع العلمي</span>
                 </button>
-                <button onclick="loadSubject('arabic', 'اللغة العربية (تخصص)')" class="bg-slate-900 hover:bg-slate-800/80 border border-slate-800/80 hover:border-amber-500/50 p-4 rounded-2xl text-right transition-all group shadow-sm">
+                <button onclick="loadSubject('arabic', 'اللغة العربية (تخصص)')" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-amber-500/50 p-4 rounded-2xl text-right transition-all group shadow-sm">
                     <span class="text-2xl block mb-2 group-hover:scale-110 transition-transform">📚</span>
                     <span class="font-bold text-amber-400 block text-sm">العربية تخصص</span>
                     <span class="text-[11px] text-slate-400">الفرع الأدبي</span>
                 </button>
-                <button onclick="loadSubject('history', 'الدراسات التاريخية')" class="bg-slate-900 hover:bg-slate-800/80 border border-slate-800/80 hover:border-amber-500/50 p-4 rounded-2xl text-right transition-all group shadow-sm">
+                <button onclick="loadSubject('history', 'الدراسات التاريخية')" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-amber-500/50 p-4 rounded-2xl text-right transition-all group shadow-sm">
                     <span class="text-2xl block mb-2 group-hover:scale-110 transition-transform">🏛️</span>
                     <span class="font-bold text-amber-400 block text-sm">التاريخ</span>
                     <span class="text-[11px] text-slate-400">الفرع الأدبي</span>
@@ -86,9 +86,7 @@
             </div>
 
             <!-- الخيارات -->
-            <div id="options-box" class="space-y-2.5 mb-5">
-                <!-- تعبئة برمجية -->
-            </div>
+            <div id="options-box" class="space-y-2.5 mb-5"></div>
 
             <!-- التوضيح الوزاري -->
             <div id="explanation-box" class="hidden bg-slate-950 border border-slate-800 p-3.5 rounded-2xl text-xs mb-4 text-slate-300">
@@ -122,33 +120,79 @@
         </div>
     </div>
 
-    <!-- جافاسكريبت التشغيل -->
+    <!-- جافاسكريبت وبنك الأسئلة المدمج لضمان العمل الفوري 100% -->
     <script>
+        // قاعدة بيانات الأسئلة المدمجة بالكامل لتجنب أخطاء التحميل الخارجي
+        const questionBanks = {
+            physics: {
+                subject: "الفيزياء - الفرع العلمي",
+                questions: [
+                    { q: "جسم كتلته 2kg أثّرت عليه قوة محصّلة مقدارها 8N، ما مقدار تسارعه؟", options: ["2 m/s²", "4 m/s²", "8 m/s²", "16 m/s²"], correct: 1, exp: "من قانون نيوتن الثاني: التسارع = القوة المحصلة ÷ الكتلة = 8 ÷ 2 = 4 م/ث²." },
+                    { q: "ما وحدة قياس الدفع في النظام الدولي للوحدات؟", options: ["N.s", "Joule", "Watt", "kg.m"], correct: 0, exp: "الدفع يساوي التغير في الزخم الخطي، ووحدته نيوتن.ثانية (N.s)." },
+                    { q: "في التصادم المرن تماماً، الكميات الفيزيائية المحفوظة هي:", options: ["السرعة فقط", "الطاقة الحركية والزخم الخطي معاً", "الطاقة الحركية وحدها", "طاقة الوضع فقط"], correct: 1, exp: "التصادم المرن يحفظ كلا من الزخم الخطي والطاقة الحركية الكلية للنظام." },
+                    { q: "العوامل التي يعتمد عليها الزخم الخطي لجسم متحرك هي:", options: ["الكتلة والسرعة المتجهة", "القوة والزمن", "الكتلة والتسارع", "المسافة والزمن"], correct: 0, exp: "الزخم الخطي يعتمد طردياً على الكتلة والسرعة المتجهة." },
+                    { q: "إذا تضاعفت سرعة جسم متحرك مع ثبات كتلته، فإن زخمه الخطي:", options: ["يقل للنصف", "يتضاعف مرتين", "يبقى ثابتاً", "يصبح ربعه"], correct: 1, exp: "العلاقة طردية خطية بين الزخم الخطي والسرعة عند ثبات الكتلة." },
+                    { q: "اتجاه الدفع المؤثر على جسم يكون دائماً في اتجاه:", options: ["القوة المحصلة المؤثرة", "عكس اتجاه الحركة", "السرعة الابتدائية", "الجاذبية الأرضية"], correct: 0, exp: "الدفع كمية متجهة يتطابق اتجاهه تماماً مع اتجاه القوة المحصلة المؤثرة." },
+                    { q: "معدل التغير الزمني للزخم الخطي لجسم يساوي:", options: ["الشغل المبذول", "القوة المحصلة", "الدفع الكلي", "الطاقة الحركية"], correct: 1, exp: "نص قانون نيوتن الثاني: القوة المحصلة تساوي معدل التغير الزمني في الزخم الخطي." },
+                    { q: "وحدة قياس (kg.m/s) تكافئ وحدة:", options: ["N.s", "Joule", "Pascal", "Watt"], correct: 0, exp: "كيلوغرام.متر لكل ثانية مكافئة تماماً لنيوتن.ثانية." },
+                    { q: "في التصادم عديم المرونة، تكون الطاقة الحركية بعد التصادم:", options: ["أكبر من قبل التصادم", "أقل من قبل التصادم", "مساوية تماماً", "تساوي صفراً"], correct: 1, exp: "يحدث فقد جزئي في الطاقة الحركية وتحولها لأشكال أخرى." },
+                    { q: "المساحة تحت منحنى (القوة - الزمن) تمثل رياضياً:", options: ["الشغل", "الدفع", "التسارع", "القدرة"], correct: 1, exp: "المساحة المحصورة تحت منحنى القوة والزمن تعطي الدفع المؤثر." }
+                ]
+            },
+            math_sci: {
+                subject: "الرياضيات - الفرع العلمي",
+                questions: [
+                    { q: "ما مشتقة الاقتران ص = جتا(س)؟", options: ["جا(س)", "-جا(س)", "ظا(س)", "-جتا(س)"], correct: 1, exp: "مشتقة جيب التمام (جتا س) هي سالب الجيب (-جا س)." },
+                    { q: "قيمة نهاية (س² - 4) ÷ (س - 2) عندما س تؤول إلى 2:", options: ["صفر", "2", "4", "غير متوفرة"], correct: 2, exp: "بتحليل البسط إلى (س-2)(س+2) واختصار المقام، ينتج التعويض بـ 2 + 2 = 4." },
+                    { q: "مشتقة أي اقتران ثابت تساوي:", options: ["واحد", "صفر", "الاقتران نفسه", "ما لا نهاية"], correct: 1, exp: "مشتقة أي عدد ثابت تساوي صفراً دائماً." },
+                    { q: "إذا كان ص = س³، فإن ص' تساوي:", options: ["3س", "3س²", "س²", "6س"], correct: 1, exp: "باستخدام قاعدة القوة: ننزل الأس ونطرح منه 1 فيصبح الناتج 3س²." },
+                    { q: "ميل المماس لمنحنى الاقتران عند نقطة عليه يمثل:", options: ["المشتقة الأولى عند تلك النقطة", "التكامل المحدود", "نهاية الاقتران", "الصفر"], correct: 0, exp: "التفسير الهندسي للمشتقة الأولى هو ميل المماس للمنحنى." }
+                ]
+            },
+            chemistry: {
+                subject: "الكيمياء - الفرع العلمي",
+                questions: [
+                    { q: "[وزاري] المادة التي لها القدرة على منح بروتون لمادة أخرى حسب مفهوم برونستد-لوري تسمى:", options: ["حمض", "قاعدة", "ملح متعادل", "أكسيد فلزي"], correct: 0, exp: "الحمض حسب برونستد-لوري هو المادة مانحة البروتون (H+)." },
+                    { q: "[وزاري] قيمة الرقم الهيدروجيني pH لمحلول حمض قوي تركيزه (0.01 M) تساوي:", options: ["2", "7", "12", "1"], correct: 0, exp: "تركيز أيون الهيدروجين يساوي تركيز الحمض (10^-2)، إذن pH = 2." }
+                ]
+            },
+            biology: {
+                subject: "العلوم الحياتية - الفرع العلمي",
+                questions: [
+                    { q: "[وزاري] العضية الخلوية المسؤولة عن إنتاج الطاقة (ATP) في الخلية الحية هي:", options: ["الميتوكندريا", "الريبوسومات", "جهاز غولجي", "البلاستيدات الخضراء"], correct: 0, exp: "الميتوكندريا تُعرف ببيت الطاقة في الخلية وتتم فيها عمليات التنفس الخلوي وإنتاج ATP." }
+                ]
+            },
+            arabic: {
+                subject: "اللغة العربية (تخصص) - الأدبي",
+                questions: [
+                    { q: "[وزاري] ما الفن الأدبي الذي يغلب عليه التعبير عن العواطف الذاتية والمشاعر الحزينة أو الحنين؟", options: ["المسرحية", "الرثاء", "المقالة", "القصة القصيرة"], correct: 1, exp: "الرثاء هو الفن الشعري المختص بتعداد محاسن الميت والتعبير عن لوعة الفراق والحزن." },
+                    { q: "[وزاري] ما نوع الصورة البيانية في قول الشاعر (بكت السماء لفراقنا)؟", options: ["تشبيه بليغ", "استعارة مكنية", "استعارة تصريحية", "كنية"], correct: 1, exp: "شبه السماء بإنسان يبكي وحذف المشبه به، وهي استعارة مكنية." }
+                ]
+            },
+            history: {
+                subject: "الدراسات التاريخية - الأدبي",
+                questions: [
+                    { q: "[وزاري] الاتفاقية التي قسّمت مناطق الهلال الخصيب بين بريطانيا وفرنسا بعد الحرب العالمية الأولى هي:", options: ["سايكس بيكو", "بلفور", "سان ريمو", "لوزان"], correct: 0, exp: "اتفاقية سايكس بيكو السرية عام 1916 قسّمت مناطق النفوذ بين الدولتين." },
+                    { q: "[وزاري] في أي عام صدر وعد بلفور المشئوم الذي أعطى حق لليهود في فلسطين؟", options: ["1917 م", "1920 م", "1948 م", "1936 م"], correct: 0, exp: "صدر وعد بلفور في الثاني من نوفمبر عام 1917 ميلادي." }
+                ]
+            }
+        };
+
         let currentQuestions = [];
         let currentIndex = 0;
         let isVip = localStorage.getItem('tawjihi_vip') === 'true';
 
-        async function loadSubject(subjectKey, subjectName) {
+        function loadSubject(subjectKey, subjectName) {
             document.getElementById('subjects-section').classList.add('hidden');
             document.getElementById('quiz-section').classList.remove('hidden');
             document.getElementById('quiz-subject-title').innerText = "بنك الوزارة: " + subjectName;
-            document.getElementById('question-box').innerText = "جاري تحميل الأسئلة من الأرشيف...";
-            document.getElementById('options-box').innerHTML = "";
-            document.getElementById('explanation-box').classList.add('hidden');
-            document.getElementById('next-btn').classList.add('hidden');
 
-            try {
-                let response = await fetch(`data/${subjectKey}.json`);
-                if (!response.ok) throw new Error("تعذر جلب ملف المادة");
-                
-                let data = await response.json();
-                currentQuestions = data.questions;
+            if (questionBanks[subjectKey]) {
+                currentQuestions = questionBanks[subjectKey].questions;
                 currentIndex = 0;
-
                 showQuestion();
-            } catch (error) {
-                console.error(error);
-                document.getElementById('question-box').innerText = "عذراً، تأكد من وجود ملف المادة في مجلد data بشكل صحيح.";
+            } else {
+                document.getElementById('question-box').innerText = "عذراً، هذه المادة قيد التحديث وسيتم إطلاقها قريباً.";
             }
         }
 
